@@ -32,9 +32,9 @@ const Header = () => {
       <nav className="container mx-auto px-6 lg:px-12 py-4 flex items-center justify-between">
         {/* Logo */}
         <a href="#inicio" className="relative z-10">
-          <img 
-            src={logoFull} 
-            alt="Charles E. Pierre" 
+          <img
+            src={logoFull}
+            alt="Logotipo da dupla Charles & Pierre"
             className="h-10 md:h-12 w-auto"
           />
         </a>
