@@ -1,20 +1,22 @@
-import Navigation from '@/components/Navigation';
-import HeroSection from '@/components/HeroSection';
-import AboutSection from '@/components/AboutSection';
-import MusicSection from '@/components/MusicSection';
-import ShowsSection from '@/components/ShowsSection';
-import ContactSection from '@/components/ContactSection';
+import Header from '@/components/Header';
+import Hero from '@/components/Hero';
+import Plataformas from '@/components/Plataformas';
+import Agenda from '@/components/Agenda';
+import Sobre from '@/components/Sobre';
+import Videos from '@/components/Videos';
+import Contato from '@/components/Contato';
 
 const Index = () => {
   return (
-    <main className="min-h-screen bg-background overflow-x-hidden">
-      <Navigation />
-      <HeroSection />
-      <AboutSection />
-      <MusicSection />
-      <ShowsSection />
-      <ContactSection />
-    </main>
+    <div className="min-h-screen bg-background">
+      <Header />
+      <Hero />
+      <Plataformas />
+      <Agenda />
+      <Sobre />
+      <Videos />
+      <Contato />
+    </div>
   );
 };
 
