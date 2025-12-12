@@ -1,51 +1,51 @@
-import { Mail, Instagram, Youtube, Music2 } from 'lucide-react';
-import logoFull from '@/assets/logo-full.jpg';
+import { Mail, Instagram, Youtube, Music } from 'lucide-react';
 
-const socialLinks = [
+const socials = [
   { icon: Instagram, label: 'Instagram', href: '#' },
   { icon: Youtube, label: 'YouTube', href: '#' },
-  { icon: Music2, label: 'Spotify', href: '#' },
+  { icon: Music, label: 'Spotify', href: '#' },
 ];
 
 const ContactSection = () => {
   return (
-    <section id="contact" className="py-24 md:py-32 bg-charcoal-dark relative overflow-hidden">
-      {/* Atmospheric glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl" />
+    <section id="contato" className="py-32 lg:py-40 bg-card relative overflow-hidden">
+      {/* Center glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/[0.04] rounded-full blur-[150px]" />
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-3xl mx-auto text-center">
-          <span className="text-primary font-sans text-sm uppercase tracking-widest mb-4 block">
-            Get in Touch
+      <div className="container mx-auto px-8 relative z-10">
+        <div className="max-w-2xl mx-auto text-center">
+          <span className="text-primary font-body text-sm tracking-[0.3em] uppercase mb-6 block">
+            Contato
           </span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-foreground mb-6">
-            Let's Connect
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-display text-foreground mb-6">
+            Vamos <span className="italic text-gradient">Conversar</span>
           </h2>
-          <div className="w-20 h-0.5 bg-primary mx-auto mb-8" />
+          <div className="w-24 h-px bg-gradient-to-r from-transparent via-primary to-transparent mx-auto mb-10" />
 
-          <p className="text-foreground/70 font-sans text-lg leading-relaxed mb-10">
-            For booking inquiries, collaborations, or just to say hello—I'd love to hear from you.
+          <p className="text-foreground/50 font-body text-lg leading-relaxed mb-12">
+            Para shows, parcerias ou apenas para trocar uma ideia — 
+            entre em contato.
           </p>
 
-          {/* Email CTA */}
+          {/* Email */}
           <a
-            href="mailto:hello@charlespierre.com"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-primary text-primary-foreground font-sans uppercase tracking-widest rounded-full hover:bg-primary/90 transition-all duration-300 shadow-glow mb-12"
+            href="mailto:contato@charlespierre.com.br"
+            className="inline-flex items-center gap-4 px-10 py-5 bg-primary text-primary-foreground font-body tracking-wider hover:bg-primary/90 transition-all duration-500 glow mb-16"
           >
             <Mail size={20} />
-            hello@charlespierre.com
+            contato@charlespierre.com.br
           </a>
 
-          {/* Social Links */}
-          <div className="flex justify-center gap-4">
-            {socialLinks.map((social) => (
+          {/* Social */}
+          <div className="flex justify-center gap-6">
+            {socials.map((social) => (
               <a
                 key={social.label}
                 href={social.href}
-                className="w-12 h-12 rounded-full border border-border/50 flex items-center justify-center text-foreground/60 hover:text-primary hover:border-primary/50 transition-all duration-300"
+                className="w-14 h-14 border border-border/40 flex items-center justify-center text-foreground/40 hover:text-primary hover:border-primary/50 transition-all duration-300"
                 aria-label={social.label}
               >
-                <social.icon size={20} />
+                <social.icon size={22} />
               </a>
             ))}
           </div>
@@ -53,16 +53,14 @@ const ContactSection = () => {
       </div>
 
       {/* Footer */}
-      <footer className="mt-24 border-t border-border/30 pt-8">
-        <div className="container mx-auto px-6">
+      <footer className="mt-32 pt-8 border-t border-border/20">
+        <div className="container mx-auto px-8">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <img
-              src={logoFull}
-              alt="Charles E. Pierre"
-              className="h-12 opacity-70"
-            />
-            <p className="text-foreground/40 text-sm font-sans">
-              © {new Date().getFullYear()} Charles E. Pierre. All rights reserved.
+            <span className="text-xl font-display italic text-gradient">
+              Charles E. Pierre
+            </span>
+            <p className="text-foreground/30 text-sm font-body">
+              © {new Date().getFullYear()} Todos os direitos reservados.
             </p>
           </div>
         </div>

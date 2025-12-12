@@ -1,59 +1,70 @@
 import heroImage from '@/assets/guitar-hero.jpg';
 import logoFull from '@/assets/logo-full.jpg';
+import { ChevronDown } from 'lucide-react';
 
 const HeroSection = () => {
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
+    <section id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Background */}
       <div className="absolute inset-0">
         <img
           src={heroImage}
-          alt="Acoustic guitar with warm bokeh lights"
-          className="w-full h-full object-cover"
+          alt="Violão acústico"
+          className="w-full h-full object-cover scale-105"
         />
-        <div className="absolute inset-0 bg-gradient-overlay" />
-        <div className="absolute inset-0 bg-background/40" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-background/50 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/60 via-transparent to-background/60" />
       </div>
 
-      {/* Animated bokeh effect */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 right-1/4 w-32 h-32 bg-primary/20 rounded-full blur-3xl animate-pulse-slow" />
-        <div className="absolute bottom-1/3 left-1/3 w-48 h-48 bg-amber/15 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: '2s' }} />
-        <div className="absolute top-1/2 right-1/3 w-24 h-24 bg-gold-light/20 rounded-full blur-2xl animate-pulse-slow" style={{ animationDelay: '1s' }} />
+      {/* Ambient light effects */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-1/3 left-1/4 w-64 h-64 bg-primary/10 rounded-full blur-[100px] animate-pulse-glow" />
+        <div className="absolute bottom-1/3 right-1/4 w-80 h-80 bg-accent/8 rounded-full blur-[120px] animate-pulse-glow" style={{ animationDelay: '2s' }} />
       </div>
 
       {/* Content */}
-      <div className="relative z-10 text-center px-6 animate-fade-up">
-        <img
-          src={logoFull}
-          alt="Charles E. Pierre"
-          className="w-64 md:w-80 lg:w-96 mx-auto mb-8 drop-shadow-2xl"
-        />
-        <p className="text-lg md:text-xl font-sans text-foreground/80 tracking-wide max-w-md mx-auto mb-10">
-          Singer • Songwriter • Guitarist
+      <div className="relative z-10 text-center px-8 max-w-4xl mx-auto">
+        <div className="animate-fade-up" style={{ animationDelay: '0.2s', opacity: 0, animationFillMode: 'forwards' }}>
+          <img
+            src={logoFull}
+            alt="Charles E. Pierre"
+            className="w-72 md:w-96 lg:w-[28rem] mx-auto mb-10 drop-shadow-2xl"
+          />
+        </div>
+
+        <p 
+          className="text-lg md:text-xl lg:text-2xl font-body font-light text-foreground/70 tracking-[0.2em] uppercase mb-12 animate-fade-up"
+          style={{ animationDelay: '0.5s', opacity: 0, animationFillMode: 'forwards' }}
+        >
+          Cantor · Compositor · Violonista
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+
+        <div 
+          className="flex flex-col sm:flex-row gap-5 justify-center animate-fade-up"
+          style={{ animationDelay: '0.8s', opacity: 0, animationFillMode: 'forwards' }}
+        >
           <a
-            href="#music"
-            className="inline-flex items-center justify-center px-8 py-3 bg-primary text-primary-foreground font-sans text-sm uppercase tracking-widest rounded-full hover:bg-primary/90 transition-all duration-300 shadow-glow"
+            href="#musica"
+            className="group inline-flex items-center justify-center px-10 py-4 bg-primary text-primary-foreground font-body font-medium tracking-wider rounded-full hover:bg-primary/90 transition-all duration-500 glow"
           >
-            Listen Now
+            Ouvir Agora
           </a>
           <a
             href="#shows"
-            className="inline-flex items-center justify-center px-8 py-3 border border-foreground/30 text-foreground font-sans text-sm uppercase tracking-widest rounded-full hover:border-primary hover:text-primary transition-all duration-300"
+            className="inline-flex items-center justify-center px-10 py-4 border border-foreground/20 text-foreground font-body tracking-wider rounded-full hover:border-primary hover:text-primary transition-all duration-500"
           >
-            Upcoming Shows
+            Próximos Shows
           </a>
         </div>
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-float">
-        <div className="w-6 h-10 border-2 border-foreground/30 rounded-full flex items-start justify-center p-2">
-          <div className="w-1 h-2 bg-primary rounded-full animate-pulse" />
-        </div>
-      </div>
+      <a 
+        href="#sobre"
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-foreground/40 hover:text-primary transition-colors animate-float"
+      >
+        <ChevronDown size={32} strokeWidth={1} />
+      </a>
     </section>
   );
 };

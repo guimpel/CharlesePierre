@@ -1,101 +1,98 @@
-import { Calendar, MapPin, Clock, ArrowRight } from 'lucide-react';
+import { MapPin, ArrowRight } from 'lucide-react';
 
-const upcomingShows = [
+const shows = [
   {
-    date: "Dec 20",
+    date: "20 Dez",
     year: "2024",
-    venue: "Blue Note Jazz Club",
-    city: "New York, NY",
-    time: "8:00 PM",
-    status: "tickets",
+    venue: "Teatro Municipal",
+    city: "São Paulo, SP",
+    time: "20:00",
+    available: true,
   },
   {
-    date: "Dec 28",
+    date: "28 Dez",
     year: "2024",
-    venue: "House of Blues",
-    city: "Chicago, IL",
-    time: "9:00 PM",
-    status: "tickets",
+    venue: "Casa de Shows Vivo Rio",
+    city: "Rio de Janeiro, RJ",
+    time: "21:00",
+    available: true,
   },
   {
-    date: "Jan 5",
+    date: "05 Jan",
     year: "2025",
-    venue: "The Troubadour",
-    city: "Los Angeles, CA",
-    time: "8:30 PM",
-    status: "tickets",
+    venue: "Espaço Cultural",
+    city: "Belo Horizonte, MG",
+    time: "20:30",
+    available: true,
   },
   {
-    date: "Jan 15",
+    date: "15 Jan",
     year: "2025",
-    venue: "Ryman Auditorium",
-    city: "Nashville, TN",
-    time: "7:30 PM",
-    status: "soon",
+    venue: "Arena Sunset",
+    city: "Curitiba, PR",
+    time: "19:30",
+    available: false,
   },
 ];
 
 const ShowsSection = () => {
   return (
-    <section id="shows" className="py-24 md:py-32 bg-gradient-dark relative overflow-hidden">
-      {/* Decorative gradient orbs */}
-      <div className="absolute top-1/4 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-1/4 w-64 h-64 bg-amber/5 rounded-full blur-3xl" />
+    <section id="shows" className="py-32 lg:py-40 relative overflow-hidden">
+      {/* Background accent */}
+      <div className="absolute bottom-0 left-0 w-1/3 h-1/2 bg-gradient-to-tr from-primary/[0.03] to-transparent" />
 
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="text-center mb-16">
-          <span className="text-primary font-sans text-sm uppercase tracking-widest mb-4 block">
-            On Tour
+      <div className="container mx-auto px-8 relative z-10">
+        <div className="text-center mb-20">
+          <span className="text-primary font-body text-sm tracking-[0.3em] uppercase mb-6 block">
+            Agenda
           </span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-serif text-foreground mb-6">
-            Upcoming Shows
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-display text-foreground mb-6">
+            Próximos <span className="italic text-gradient">Shows</span>
           </h2>
-          <div className="w-20 h-0.5 bg-primary mx-auto" />
+          <div className="w-24 h-px bg-gradient-to-r from-transparent via-primary to-transparent mx-auto" />
         </div>
 
-        {/* Shows List */}
-        <div className="max-w-4xl mx-auto space-y-4">
-          {upcomingShows.map((show, index) => (
+        {/* Shows list */}
+        <div className="max-w-4xl mx-auto">
+          {shows.map((show, index) => (
             <div
               key={`${show.date}-${show.venue}`}
-              className="group bg-secondary/30 border border-border/30 rounded-xl p-6 hover:border-primary/50 hover:bg-secondary/50 transition-all duration-300"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className="group border-b border-border/30 py-8 first:border-t hover:bg-primary/[0.02] transition-all duration-500"
             >
-              <div className="flex flex-col md:flex-row md:items-center gap-4 md:gap-8">
+              <div className="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-0">
                 {/* Date */}
-                <div className="flex-shrink-0 text-center md:text-left md:w-24">
-                  <span className="text-3xl font-serif text-primary block">{show.date}</span>
-                  <span className="text-foreground/50 text-sm">{show.year}</span>
+                <div className="lg:w-32 flex-shrink-0">
+                  <span className="text-3xl lg:text-4xl font-display text-gradient block leading-none">
+                    {show.date}
+                  </span>
+                  <span className="text-foreground/30 text-sm mt-1 block">{show.year}</span>
                 </div>
 
-                {/* Venue Info */}
-                <div className="flex-grow">
-                  <h3 className="text-xl font-serif text-foreground mb-1">{show.venue}</h3>
-                  <div className="flex flex-wrap gap-4 text-foreground/60 text-sm">
-                    <span className="inline-flex items-center gap-1">
-                      <MapPin size={14} className="text-primary/70" />
+                {/* Info */}
+                <div className="flex-grow lg:px-8">
+                  <h3 className="text-xl font-display text-foreground mb-2">{show.venue}</h3>
+                  <div className="flex flex-wrap gap-4 text-foreground/40 text-sm">
+                    <span className="inline-flex items-center gap-2">
+                      <MapPin size={14} className="text-primary/60" />
                       {show.city}
                     </span>
-                    <span className="inline-flex items-center gap-1">
-                      <Clock size={14} className="text-primary/70" />
-                      {show.time}
-                    </span>
+                    <span>{show.time}</span>
                   </div>
                 </div>
 
                 {/* CTA */}
-                <div className="flex-shrink-0">
-                  {show.status === 'tickets' ? (
+                <div className="lg:w-48 flex-shrink-0 lg:text-right">
+                  {show.available ? (
                     <a
                       href="#"
-                      className="inline-flex items-center gap-2 px-6 py-2.5 bg-primary text-primary-foreground font-sans text-sm uppercase tracking-wider rounded-full hover:bg-primary/90 transition-all duration-300 group-hover:shadow-glow"
+                      className="inline-flex items-center gap-3 px-8 py-3 bg-primary text-primary-foreground font-body text-sm tracking-wider hover:bg-primary/90 transition-all duration-300 group/btn"
                     >
-                      Get Tickets
-                      <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                      Ingressos
+                      <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform" />
                     </a>
                   ) : (
-                    <span className="inline-flex items-center px-6 py-2.5 border border-foreground/20 text-foreground/50 font-sans text-sm uppercase tracking-wider rounded-full">
-                      Coming Soon
+                    <span className="inline-flex items-center px-8 py-3 border border-border/30 text-foreground/30 font-body text-sm tracking-wider">
+                      Em breve
                     </span>
                   )}
                 </div>
@@ -104,14 +101,14 @@ const ShowsSection = () => {
           ))}
         </div>
 
-        {/* View All */}
-        <div className="text-center mt-12">
+        {/* View all */}
+        <div className="text-center mt-16">
           <a
             href="#"
-            className="inline-flex items-center gap-2 text-primary font-sans uppercase tracking-wider text-sm hover:text-primary/80 transition-colors group"
+            className="inline-flex items-center gap-3 text-primary font-body tracking-wider text-sm hover:gap-4 transition-all group"
           >
-            View All Tour Dates
-            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            Ver Todas as Datas
+            <ArrowRight size={16} />
           </a>
         </div>
       </div>
