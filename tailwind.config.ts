@@ -47,11 +47,6 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        gold: {
-          DEFAULT: "hsl(var(--gold))",
-          light: "hsl(var(--gold-light))",
-          muted: "hsl(var(--gold-muted))",
-        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
@@ -64,8 +59,8 @@ export default {
         },
       },
       fontFamily: {
-        display: ['Playfair Display', 'Georgia', 'serif'],
-        body: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['Bebas Neue', 'Impact', 'sans-serif'],
+        body: ['Montserrat', 'system-ui', 'sans-serif'],
       },
       borderRadius: {
         lg: "var(--radius)",
