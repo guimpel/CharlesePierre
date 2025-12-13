@@ -59,7 +59,7 @@ const Contato = () => {
         <div className="container mx-auto px-6 lg:px-12">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
             <p className="text-foreground/40 text-sm font-body">
-              Todos os direitos reservados © {new Date().getFullYear()} Charles E. Pierre
+              Todos os direitos reservados © {new Date().getFullYear()} Charles e Pierre
             </p>
             <p className="text-foreground/30 text-xs font-body">
               Desenvolvido com ❤️
