@@ -2,16 +2,19 @@ import { Play } from 'lucide-react';
 
 const videos = [
   {
-    title: 'Ao Vivo em São Paulo',
+    title: 'São Teus Olhos - Disco Completo 1995',
     thumbnail: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&q=80',
+    url: 'https://www.youtube.com/watch?v=ZiSHFQNeq9U',
   },
   {
-    title: 'Clipe Oficial - Saudade',
+    title: 'Só Uma Vez - Charles e Pierre Vol.5',
     thumbnail: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800&q=80',
+    url: 'https://www.youtube.com/watch?v=trfUyhqu1YI',
   },
   {
-    title: 'Acústico Especial',
+    title: 'Me Dê Um Sinal (1990)',
     thumbnail: 'https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=800&q=80',
+    url: 'https://www.youtube.com/watch?v=78xntAIdgl8',
   },
 ];
 
@@ -42,7 +45,9 @@ const Videos = () => {
           {videos.map((video, index) => (
             <a
               key={video.title}
-              href="#"
+              href={video.url}
+              target="_blank"
+              rel="noopener noreferrer"
               className="group relative aspect-video overflow-hidden bg-muted"
             >
               <img

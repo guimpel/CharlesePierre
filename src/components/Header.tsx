@@ -34,7 +34,7 @@ const Header = () => {
         <a href="#inicio" className="relative z-10">
           <img 
             src={logoFull} 
-            alt="Charles E. Pierre" 
+            alt="Charles e Pierre" 
             className="h-10 md:h-12 w-auto"
           />
         </a>

@@ -8,7 +8,7 @@ const Hero = () => {
       <div className="absolute inset-0 animate-scale-in">
         <img
           src={heroImage}
-          alt="Charles E. Pierre no palco"
+          alt="Charles e Pierre no palco"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
@@ -28,11 +28,15 @@ const Hero = () => {
           />
           
           <h1 className="text-6xl md:text-8xl lg:text-9xl font-display text-foreground tracking-[0.1em] mb-4">
-            CHARLES E. PIERRE
+            CHARLES e PIERRE
           </h1>
           
-          <p className="text-lg md:text-xl font-body font-light text-foreground/60 tracking-[0.3em] uppercase mb-12">
-            Cantor & Compositor
+          <p className="text-lg md:text-xl font-body font-light text-foreground/60 tracking-[0.3em] uppercase mb-8">
+            Dupla Sertaneja
+          </p>
+
+          <p className="text-base md:text-lg font-body font-light text-accent tracking-[0.2em] uppercase mb-12">
+            30 Anos de Carreira
           </p>
 
           {/* CTA */}
@@ -61,7 +65,7 @@ const Hero = () => {
       {/* Copyright - Bottom Left */}
       <div className="absolute bottom-8 left-8 z-10">
         <p className="text-xs font-body text-foreground/40 tracking-wider">
-          © 2024 Charles E. Pierre
+          © 2024 Charles e Pierre
         </p>
       </div>
     </section>
