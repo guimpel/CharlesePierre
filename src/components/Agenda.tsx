@@ -82,7 +82,7 @@ const Agenda = () => {
                       href="#"
                       className="inline-block px-8 py-3 bg-foreground text-background font-body font-semibold text-sm tracking-wider uppercase hover:bg-foreground/90 transition-colors"
                     >
-                      Ingressos
+                      Comparecer
                     </a>
                   ) : (
                     <span className="inline-block px-8 py-3 border border-foreground/20 text-foreground/40 font-body text-sm tracking-wider uppercase">
