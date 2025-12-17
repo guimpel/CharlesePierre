@@ -62,7 +62,7 @@ const Contato = () => {
               Todos os direitos reservados © {new Date().getFullYear()} Charles e Pierre
             </p>
             <p className="text-foreground/30 text-xs font-body">
-              @guimpel | Desenvolvido com ❤️
+              @guimpel
             </p>
           </div>
         </div>
