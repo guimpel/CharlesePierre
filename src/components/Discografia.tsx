@@ -101,7 +101,7 @@ const Discografia = () => {
           </p>
           <div className="flex justify-center gap-4 flex-wrap">
             <a
-              href="https://open.spotify.com/artist/charles-e-pierre"
+              href="https://open.spotify.com/artist/0f0nqLrqYir5p8m3dXab1t"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 bg-[#1DB954] text-white font-body font-semibold text-sm tracking-wider uppercase hover:bg-[#1ed760] transition-colors"
@@ -110,7 +110,7 @@ const Discografia = () => {
               Spotify
             </a>
             <a
-              href="http://www.deezer.com/br/album/14221052"
+              href="https://www.deezer.com/pt/artist/449639"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 border border-foreground text-foreground font-body font-semibold text-sm tracking-wider uppercase hover:bg-foreground hover:text-background transition-colors"
@@ -118,7 +118,7 @@ const Discografia = () => {
               Deezer
             </a>
             <a
-              href="https://www.youtube.com/results?search_query=charles+e+pierre+sertanejo"
+              href="https://www.youtube.com/@charlesepierre"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-6 py-3 bg-[#FF0000] text-white font-body font-semibold text-sm tracking-wider uppercase hover:bg-[#CC0000] transition-colors"
