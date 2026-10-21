@@ -34,7 +34,7 @@ const Agenda = () => {
             </h2>
           </div>
           <a
-            href="#"
+            href="mailto:contato@charlespierre.com.br"
             className="mt-6 md:mt-0 text-sm font-body font-medium text-foreground/60 hover:text-foreground tracking-wider uppercase transition-colors"
           >
             Agenda Completa →
@@ -79,7 +79,7 @@ const Agenda = () => {
                 <div className="md:w-48 flex-shrink-0 md:text-right">
                   {evento.status === 'available' ? (
                     <a
-                      href="#"
+                      href="mailto:contato@charlespierre.com.br"
                       className="inline-block px-8 py-3 bg-foreground text-background font-body font-semibold text-sm tracking-wider uppercase hover:bg-foreground/90 transition-colors"
                     >
                       Comparecer
