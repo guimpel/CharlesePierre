@@ -10,7 +10,7 @@
 
 ## Atualização por etapas (aguardar aprovação entre execuções)
 - [x] Etapa 0: diagnóstico sem alteração do site
-- [ ] Etapa 1: apontar Comparecer e Agenda Completa para mailto:contato@charlespierre.com.br — aguarda aprovação
+- [x] Etapa 1: apontar Comparecer e Agenda Completa para mailto:contato@charlespierre.com.br
 - [ ] Atualizar um volume por execução, incluindo os faltantes — aguarda JSON/descrições de cada volume
 - [ ] Letras e links individuais por volume — aguarda letras fornecidas e validação dos links
 - [ ] Capas por álbum — aguarda correspondência/validação das imagens
