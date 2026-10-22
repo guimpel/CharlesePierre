@@ -11,6 +11,7 @@
 ## Atualização por etapas (aguardar aprovação entre execuções)
 - [x] Etapa 0: diagnóstico sem alteração do site
 - [x] Etapa 1: apontar Comparecer e Agenda Completa para mailto:contato@charlespierre.com.br
+- [x] Incluir álbuns faltantes (Charles e Pierre 1990, Made In Sertão 1992, Só Uma Vez 1997) — sem faixas, aguardando descrições
 - [ ] Atualizar um volume por execução, incluindo os faltantes — aguarda JSON/descrições de cada volume
 - [ ] Letras e links individuais por volume — aguarda letras fornecidas e validação dos links
 - [ ] Capas por álbum — aguarda correspondência/validação das imagens

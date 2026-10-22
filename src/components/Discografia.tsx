@@ -1,5 +1,11 @@
 const albuns = [
   {
+    ano: '1997',
+    titulo: 'Só Uma Vez',
+    tipo: 'LP',
+    musicas: [],
+  },
+  {
     ano: '1995',
     titulo: 'São Teus Olhos',
     tipo: 'LP',
@@ -32,6 +38,18 @@ const albuns = [
       'Garota Especial',
       'Abelha Malvada',
     ],
+  },
+  {
+    ano: '1992',
+    titulo: 'Made In Sertão',
+    tipo: 'LP',
+    musicas: [],
+  },
+  {
+    ano: '1990',
+    titulo: 'Charles e Pierre',
+    tipo: 'LP',
+    musicas: [],
   },
   {
     ano: '1990',
