@@ -33,14 +33,14 @@ const Sobre = () => {
               </p>
               <p>
                 Com um estilo versátil que vai da música de raiz ao romântico, a dupla conquistou 
-                o público realizando shows por todo o interior do Brasil. Em 1993, gravaram seu 
+                o público realizando shows por todo o interior do Brasil. Em 1990, gravaram seu 
                 primeiro disco, "Brasil Rural", com destaque para as músicas "Garota Especial" 
                 e "Abelha Malvada".
               </p>
               <p>
                 Em 1994, lançaram o LP "Por Te Amar Demais", onde se destacaram as composições 
                 "Por Te Amar Demais" e "Amor Livre". Em 1995, veio o álbum "São Teus Olhos" com 
-                sucessos como "Anjo da Noite" e "Papel de Bobo". Ao longo de mais de três décadas, 
+                sucessos como "Anjo da Noite" e "Papel de Bobo". Depois vieram "Só Uma Vez" (Vol. 5) e o Vol. 6, com "Mulher Indomada" e "Senhora Aparecida". Ao longo de mais de três décadas, 
                 a dupla se consolidou como referência no cenário sertanejo mineiro.
               </p>
             </div>

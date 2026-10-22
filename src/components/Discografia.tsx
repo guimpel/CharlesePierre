@@ -1,73 +1,13 @@
 const albuns = [
-  {
-    ano: '1997',
-    titulo: 'Só Uma Vez',
-    tipo: 'LP',
-    musicas: [],
-  },
-  {
-    ano: '1995',
-    titulo: 'São Teus Olhos',
-    tipo: 'LP',
-    musicas: [
-      'São Teus Olhos',
-      'Não Deixei De Te Amar',
-      'Anjo Da Noite',
-      'Era Tudo Mentira',
-      'Eu Digo Não',
-      'Só Por Amor',
-      'Papel De Bobo',
-      'Sempre Na Estrada',
-      'Quem é Você?',
-    ],
-  },
-  {
-    ano: '1994',
-    titulo: 'Por Te Amar Demais',
-    tipo: 'LP',
-    musicas: [
-      'Por Te Amar Demais',
-      'Amor Livre',
-    ],
-  },
-  {
-    ano: '1990',
-    titulo: 'Brasil Rural',
-    tipo: 'LP • Vol. 1',
-    musicas: [
-      'Me Dê Um Sinal',
-      'O Inferno É Aqui Mesmo',
-      'Garota Especial',
-      'Férias no Amor',
-      'Não Faça Assim Comigo',
-      'Abelha Malvada',
-      'Menina Paixão',
-      'Vale Postal',
-      'Sofrimento',
-      'Coração Indefeso',
-    ],
-  },
-  {
-    ano: '1992',
-    titulo: 'Made In Sertão',
-    tipo: 'LP',
-    musicas: [],
-  },
-  {
-    ano: '1990',
-    titulo: 'Charles e Pierre',
-    tipo: 'LP',
-    musicas: [],
-  },
-  {
-    ano: '1990',
-    titulo: 'Single',
-    tipo: 'Single',
-    musicas: [
-      'Me Dê Um Sinal',
-    ],
-  },
+  { ano: '', titulo: 'Charles & Pierre', tipo: 'CD • Vol. 6', musicas: ['Mulher Indomada','Só Te Amar','Minha Menina','Feitiço','Diga de Uma Vez por Todas','Só Com Você','Fica Comigo Agora','Tô Pro Amor','Namoro Antigo','Senhora Aparecida'] },
+  { ano: '1997', titulo: 'Só Uma Vez', tipo: 'CD • Vol. 5', musicas: ['Só Uma Vez','Eu Quero Fazer Amor','Diga Pra Mim','Não Peça Bis','Quando Ela Passa Por Mim','Riozinho','Não Volta','Corre-Corre','Mundo de Amor','Blá Blá Blá','De Cidade em Cidade','Meu Pensamento É Todo Você','Briguenta'] },
+  { ano: '1995', titulo: 'São Teus Olhos', tipo: 'LP • Vol. 4', musicas: ['São Teus Olhos','Não Deixei de Te Amar','Anjo da Noite','Era Tudo Mentira','Eu Digo Não','Só Por Amor','Papel de Bobo','Sempre na Estrada','Quem É Você?','Noite Colorida','Volta Pra Mim','Por Te Amar Demais'] },
+  { ano: '1994', titulo: 'Por Te Amar Demais', tipo: 'LP • Vol. 3', musicas: ['Por Te Amar Demais','Você Foi Bobo Demais, Coração','Volta Pra Mim','Um Coração Não É Brinquedo','Estou Feliz','Amor Livre','Eu Digo Sim, Você Diz Não','Namorada','Diferenças','Amor Livre — Karaokê'] },
+  { ano: '1992', titulo: 'Made In Sertão', tipo: 'LP • Vol. 2', musicas: ['Cama Gostosa','É Só Me Chamar Que Eu Vou','A Cola na Coxa Dela','Que Gostoso','Cama Gostosa — Karaokê','Dia Sim, Dia Sim','Sala de Aula','Homenagem à Aparecida','Quando','Dia Sim, Dia Sim — Karaokê'] },
+  { ano: '1990', titulo: 'Brasil Rural', tipo: 'LP • Vol. 1', musicas: ['Me Dê Um Sinal','O Inferno É Aqui Mesmo','Garota Especial','Férias no Amor','Não Faça Assim Comigo','Abelha Malvada','Menina Paixão','Vale Postal','Sofrimento','Coração Indefeso'] },
 ];
+
+const busca = (musica: string) => encodeURIComponent(`Charles e Pierre ${musica.replace(/ — Karaokê$/, '')}`);
 
 const Discografia = () => {
   return (
@@ -93,14 +33,14 @@ const Discografia = () => {
               {/* Album Art Placeholder */}
               <div className="aspect-square bg-foreground/5 flex items-center justify-center mb-6 group-hover:bg-foreground/10 transition-colors">
                 <div className="text-center">
-                  <span className="text-6xl font-display text-foreground/20">{album.ano}</span>
+                  <span className="text-6xl font-display text-foreground/20">{album.ano || album.tipo.split('• ')[1]}</span>
                 </div>
               </div>
 
               {/* Album Info */}
               <div className="space-y-2">
                 <span className="text-xs font-body text-foreground/40 tracking-wider uppercase">
-                  {album.tipo} • {album.ano}
+                  {album.tipo}{album.ano && ` • ${album.ano}`}
                 </span>
                 <h3 className="text-xl font-display text-foreground tracking-wide">
                   {album.titulo}
@@ -109,9 +49,11 @@ const Discografia = () => {
                 {/* Track List */}
                 <ul className="pt-4 space-y-1">
                   {album.musicas.map((musica, idx) => (
-                    <li key={musica} className="text-sm font-body text-foreground/60 flex items-center gap-2">
+                    <li key={`${idx}-${musica}`} className="text-sm font-body text-foreground/60 flex items-center gap-2">
                       <span className="text-xs text-foreground/30">{String(idx + 1).padStart(2, '0')}</span>
-                      {musica}
+                      <span className="flex-1">{musica}</span>
+                      <a href={`https://www.youtube.com/results?search_query=${busca(musica)}`} target="_blank" rel="noopener noreferrer" className="text-xs text-foreground/40 hover:text-foreground" title="Ouvir no YouTube">Ouvir</a>
+                      <a href={`https://www.letras.mus.br/?q=${busca(musica)}`} target="_blank" rel="noopener noreferrer" className="text-xs text-foreground/40 hover:text-foreground" title="Letra no Letras">Letra</a>
                     </li>
                   ))}
                 </ul>
