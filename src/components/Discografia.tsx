@@ -35,8 +35,16 @@ const albuns = [
     titulo: 'Brasil Rural',
     tipo: 'LP',
     musicas: [
+      'Me Dê Um Sinal',
+      'O Inferno É Aqui Mesmo',
       'Garota Especial',
+      'Férias no Amor',
+      'Não Faça Assim Comigo',
       'Abelha Malvada',
+      'Menina Paixão',
+      'Vale Postal',
+      'Sofrimento',
+      'Coração Indefeso',
     ],
   },
   {
