@@ -31,9 +31,9 @@ const albuns = [
     ],
   },
   {
-    ano: '1993',
+    ano: '1990',
     titulo: 'Brasil Rural',
-    tipo: 'LP',
+    tipo: 'LP • Vol. 1',
     musicas: [
       'Me Dê Um Sinal',
       'O Inferno É Aqui Mesmo',
