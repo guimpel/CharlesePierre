@@ -56,7 +56,7 @@ const Sobre = () => {
                 <span className="text-foreground/50 text-sm block mt-1 font-body">Shows</span>
               </div>
               <div>
-                <span className="text-4xl font-display text-foreground">5</span>
+                <span className="text-4xl font-display text-foreground">6</span>
                 <span className="text-foreground/50 text-sm block mt-1 font-body">Álbuns</span>
               </div>
             </div>
