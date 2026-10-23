@@ -8,7 +8,12 @@
   - Spotify: https://open.spotify.com/artist/0f0nqLrqYir5p8m3dXab1t
   - Apple Music: https://music.apple.com/br/artist/charles-e-pierre/1676967143
 
-## Atualização por etapas (aguardar aprovação entre execuções)
+## Revisão atual (execução direta, preservando o site)
+- [ ] Conferir e corrigir links de músicas e letras com destinos verificados
+- [ ] Substituir a logomarca do cabeçalho — aguarda arquivo original; as artes disponíveis não comprovam a marca original
+- [ ] Verificar navegação e imagens na página
+
+## Catálogo
 - [x] Etapa 0: diagnóstico sem alteração do site
 - [x] Etapa 1: apontar Comparecer e Agenda Completa para mailto:contato@charlespierre.com.br
 - [x] Incluir álbuns faltantes (Charles e Pierre 1990, Made In Sertão 1992, Só Uma Vez 1997) — sem faixas, aguardando descrições
