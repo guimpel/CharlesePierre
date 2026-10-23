@@ -1,5 +1,6 @@
 import capaVol3 from '@/assets/capa-vol3.jpg';
 import capaVol4 from '@/assets/capa-vol4.jpg';
+import { getMusicLinks } from '@/lib/music-links';
 
 const albuns: { ano: string; titulo: string; tipo: string; musicas: string[]; capa?: string }[] = [
   { ano: '', titulo: 'Charles & Pierre', tipo: 'CD • Vol. 6', musicas: ['Mulher Indomada','Só Te Amar','Minha Menina','Feitiço','Diga de Uma Vez por Todas','Só Com Você','Fica Comigo Agora','Tô Pro Amor','Namoro Antigo','Senhora Aparecida'] },
@@ -9,8 +10,6 @@ const albuns: { ano: string; titulo: string; tipo: string; musicas: string[]; ca
   { ano: '1992', titulo: 'Made In Sertão', tipo: 'LP • Vol. 2', musicas: ['Cama Gostosa','É Só Me Chamar Que Eu Vou','A Cola na Coxa Dela','Que Gostoso','Cama Gostosa — Karaokê','Dia Sim, Dia Sim','Sala de Aula','Homenagem à Aparecida','Quando','Dia Sim, Dia Sim — Karaokê'] },
   { ano: '1990', titulo: 'Brasil Rural', tipo: 'LP • Vol. 1', musicas: ['Me Dê Um Sinal','O Inferno É Aqui Mesmo','Garota Especial','Férias no Amor','Não Faça Assim Comigo','Abelha Malvada','Menina Paixão','Vale Postal','Sofrimento','Coração Indefeso'] },
 ];
-
-const busca = (musica: string) => encodeURIComponent(`Charles e Pierre ${musica.replace(/ — Karaokê$/, '')}`);
 
 const Discografia = () => {
   return (
@@ -55,14 +54,17 @@ const Discografia = () => {
                 
                 {/* Track List */}
                 <ul className="pt-4 space-y-1">
-                  {album.musicas.map((musica, idx) => (
-                    <li key={`${idx}-${musica}`} className="text-sm font-body text-foreground/60 flex items-center gap-2">
+                  {album.musicas.map((musica, idx) => {
+                    const links = getMusicLinks(musica);
+                    return (
+                    <li key={`${idx}-${musica}`} className="text-sm font-body text-foreground/60 flex flex-wrap items-center gap-2">
                       <span className="text-xs text-foreground/30">{String(idx + 1).padStart(2, '0')}</span>
-                      <span className="flex-1">{musica}</span>
-                      <a href={`https://www.youtube.com/results?search_query=${busca(musica)}`} target="_blank" rel="noopener noreferrer" className="text-xs text-foreground/40 hover:text-foreground" title="Ouvir no YouTube">Ouvir</a>
-                      <a href={`https://www.letras.mus.br/?q=${busca(musica)}`} target="_blank" rel="noopener noreferrer" className="text-xs text-foreground/40 hover:text-foreground" title="Letra no Letras">Letra</a>
+                      <span className="flex-1 min-w-0 break-words">{musica}</span>
+                      <a href={links.listenUrl} target="_blank" rel="noopener noreferrer" className="text-xs text-foreground/40 hover:text-foreground" aria-label={`${links.directRecording ? 'Ouvir' : 'Buscar no YouTube'} ${musica}`} title={links.directRecording ? 'Ouvir no YouTube' : 'Buscar música no YouTube'}>Ouvir</a>
+                      {links.lyricsUrl && <a href={links.lyricsUrl} target="_blank" rel="noopener noreferrer" className="text-xs text-foreground/40 hover:text-foreground" aria-label={`${links.directLyrics ? 'Ler letra de' : 'Buscar letra de'} ${musica}`} title={links.directLyrics ? 'Letra no Letras' : 'Buscar letra no Letras'}>Letra</a>}
                     </li>
-                  ))}
+                    );
+                  })}
                 </ul>
               </div>
             </div>
