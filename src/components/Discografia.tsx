@@ -1,6 +1,8 @@
 import capaVol3 from '@/assets/capa-vol3.jpg';
 import capaVol4 from '@/assets/capa-vol4.jpg';
 import capaVol5 from '@/assets/capa-vol5.jpg';
+import capaVol1 from '@/assets/capa-vol1.png.asset.json';
+import capaVol2 from '@/assets/capa-vol2.jpg.asset.json';
 import { getMusicLinks } from '@/lib/music-links';
 
 const albuns: { ano: string; titulo: string; tipo: string; musicas: string[]; capa?: string }[] = [
