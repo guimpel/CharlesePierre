@@ -1,17 +1,48 @@
+import { useEffect, useState } from 'react';
 import heroImage from '@/assets/hero-stage.jpg';
+import fazendaImage from '@/assets/dupla-fazenda.png.asset.json';
 import logoCp from '@/assets/logo-cp.jpg';
 
+const heroImages = [heroImage, fazendaImage.url];
+
 const Hero = () => {
+  const [current, setCurrent] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % heroImages.length);
+    }, 7000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section id="inicio" className="relative h-screen w-full overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0 animate-scale-in">
-        <img
-          src={heroImage}
-          alt="Charles e Pierre no palco"
-          className="w-full h-full object-cover"
-        />
+      {/* Background Carousel */}
+      <div className="absolute inset-0">
+        {heroImages.map((src, index) => (
+          <img
+            key={src}
+            src={src}
+            alt={index === 0 ? 'Charles e Pierre no palco' : 'Charles e Pierre na fazenda ao pôr do sol'}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-[2000ms] ease-in-out ${
+              index === current ? 'opacity-100' : 'opacity-0'
+            }`}
+          />
+        ))}
         <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
+        {/* Carousel indicators */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+          {heroImages.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrent(index)}
+              aria-label={`Imagem ${index + 1}`}
+              className={`h-1 rounded-full transition-all duration-500 ${
+                index === current ? 'w-8 bg-accent' : 'w-4 bg-foreground/30 hover:bg-foreground/50'
+              }`}
+            />
+          ))}
+        </div>
       </div>
 
       {/* Content */}
