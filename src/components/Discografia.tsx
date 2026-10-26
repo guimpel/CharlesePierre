@@ -1,10 +1,11 @@
 import capaVol3 from '@/assets/capa-vol3.jpg';
 import capaVol4 from '@/assets/capa-vol4.jpg';
+import capaVol5 from '@/assets/capa-vol5.jpg';
 import { getMusicLinks } from '@/lib/music-links';
 
 const albuns: { ano: string; titulo: string; tipo: string; musicas: string[]; capa?: string }[] = [
   { ano: '', titulo: 'Charles & Pierre', tipo: 'CD • Vol. 6', musicas: ['Mulher Indomada','Só Te Amar','Minha Menina','Feitiço','Diga de Uma Vez por Todas','Só Com Você','Fica Comigo Agora','Tô Pro Amor','Namoro Antigo','Senhora Aparecida'] },
-  { ano: '1997', titulo: 'Só Uma Vez', tipo: 'CD • Vol. 5', musicas: ['Só Uma Vez','Eu Quero Fazer Amor','Diga Pra Mim','Não Peça Bis','Quando Ela Passa Por Mim','Riozinho','Não Volta','Corre-Corre','Mundo de Amor','Blá Blá Blá','De Cidade em Cidade','Meu Pensamento É Todo Você','Briguenta'] },
+  { ano: '1997', titulo: 'Só Uma Vez', tipo: 'CD • Vol. 5', capa: capaVol5, musicas: ['Só Uma Vez','Eu Quero Fazer Amor','Diga Pra Mim','Não Peça Bis','Quando Ela Passa Por Mim','Riozinho','Não Volta','Corre-Corre','Mundo de Amor','Blá Blá Blá','De Cidade em Cidade','Meu Pensamento É Todo Você','Briguenta'] },
   { ano: '1995', titulo: 'São Teus Olhos', tipo: 'LP • Vol. 4', capa: capaVol4, musicas: ['São Teus Olhos','Não Deixei de Te Amar','Anjo da Noite','Era Tudo Mentira','Eu Digo Não','Só Por Amor','Papel de Bobo','Sempre na Estrada','Quem É Você?','Noite Colorida','Volta Pra Mim','Por Te Amar Demais'] },
   { ano: '1994', titulo: 'Por Te Amar Demais', tipo: 'LP • Vol. 3', capa: capaVol3, musicas: ['Por Te Amar Demais','Você Foi Bobo Demais, Coração','Volta Pra Mim','Um Coração Não É Brinquedo','Estou Feliz','Amor Livre','Eu Digo Sim, Você Diz Não','Namorada','Diferenças','Amor Livre — Karaokê'] },
   { ano: '1992', titulo: 'Made In Sertão', tipo: 'LP • Vol. 2', musicas: ['Cama Gostosa','É Só Me Chamar Que Eu Vou','A Cola na Coxa Dela','Que Gostoso','Cama Gostosa — Karaokê','Dia Sim, Dia Sim','Sala de Aula','Homenagem à Aparecida','Quando','Dia Sim, Dia Sim — Karaokê'] },
