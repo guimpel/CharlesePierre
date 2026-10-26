@@ -10,7 +10,8 @@
 
 ## Revisão atual (execução direta, preservando o site)
 - [ ] Conferir e corrigir links de músicas e letras com destinos verificados
-- [ ] Substituir a logomarca do cabeçalho — aguarda arquivo original; as artes disponíveis não comprovam a marca original
+- [x] Substituir a logomarca do cabeçalho — logo oficial (Charles & Pierre, fundo transparente) enviada pelo usuário em 26/10/2026, aplicada via asset CDN
+- [x] Carrossel no hero com a foto da fazenda — alterna com a foto do palco a cada 7s, com indicadores clicáveis
 - [ ] Verificar navegação e imagens na página
 
 ## Catálogo
