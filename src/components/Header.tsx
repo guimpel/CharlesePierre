@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import logoFull from '@/assets/logo-full.jpg';
+import logoFull from '@/assets/logo-oficial.png.asset.json';
 
 const navLinks = [
   { href: '#inicio', label: 'HOME' },
@@ -33,9 +33,9 @@ const Header = () => {
         {/* Logo */}
         <a href="#inicio" className="relative z-10">
           <img 
-            src={logoFull} 
+            src={logoFull.url} 
             alt="Charles e Pierre" 
-            className="h-10 md:h-12 w-auto"
+            className="h-12 md:h-14 w-auto"
           />
         </a>
 
