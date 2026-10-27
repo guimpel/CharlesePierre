@@ -1,5 +1,9 @@
 # Roadmap
 
+## Solicitação atual
+- [ ] Trocar o ícone da aba pela logomarca oficial enviada
+- [ ] Pesquisar capas originais e comparar com as imagens enviadas, corrigindo apenas correspondências confirmadas
+
 - [x] Links reais das redes sociais e plataformas em todo o site
   - Instagram: https://www.instagram.com/charlesepierre/
   - YouTube: https://www.youtube.com/@charlesepierre
