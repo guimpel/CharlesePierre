@@ -1,6 +1,9 @@
 # Roadmap
 
 ## Solicitação atual
+- [ ] Reproduzir músicas e vídeos em janela dentro do site
+- [ ] Fazer “Ver todos” abrir coleção por YouTube, Instagram, Facebook e Spotify
+- [ ] Listar vídeos verificados do canal oficial e conectar atualização de publicações
 - [x] Trocar o ícone da aba pela logomarca oficial enviada
 - [x] Pesquisar capas e comparar com as imagens enviadas: Vol. 3 corrigido pela Deezer; Vol. 4 usa a imagem enviada; Vol. 5 confirmado na Deezer
 - [ ] Obter capas originais dos Vol. 1, 2 e 6 — não localizadas nos acervos consultados; depende de fonte ou imagem identificada
