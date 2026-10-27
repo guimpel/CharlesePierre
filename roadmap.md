@@ -1,8 +1,9 @@
 # Roadmap
 
 ## Solicitação atual
-- [ ] Trocar o ícone da aba pela logomarca oficial enviada
-- [ ] Pesquisar capas originais e comparar com as imagens enviadas, corrigindo apenas correspondências confirmadas
+- [x] Trocar o ícone da aba pela logomarca oficial enviada
+- [x] Pesquisar capas e comparar com as imagens enviadas: Vol. 3 corrigido pela Deezer; Vol. 4 usa a imagem enviada; Vol. 5 confirmado na Deezer
+- [ ] Obter capas originais dos Vol. 1, 2 e 6 — não localizadas nos acervos consultados; depende de fonte ou imagem identificada
 
 - [x] Links reais das redes sociais e plataformas em todo o site
   - Instagram: https://www.instagram.com/charlesepierre/
