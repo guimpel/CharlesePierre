@@ -4,7 +4,7 @@ import { ArrowLeft, Play, Search, RefreshCw, Instagram } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { useMedia } from '@/components/MediaPlayer';
-import logo from '@/assets/logo-oficial.png.asset.json';
+import logo from '@/assets/logo-oficial.png';
 
 export default function RedesSociais() {
   const [params] = useSearchParams();
@@ -12,7 +12,7 @@ export default function RedesSociais() {
   const [query, setQuery] = useState('');
   useEffect(() => { window.scrollTo(0, 0); }, []);
   return <main className="min-h-screen bg-background text-foreground font-body">
-    <header className="border-b border-border"><div className="container mx-auto px-6 py-5 flex items-center justify-between"><Link to="/#inicio"><img src={logo.url} alt="Charles e Pierre" className="h-14" /></Link><Button variant="ghost" asChild><Link to="/#videos"><ArrowLeft />Voltar</Link></Button></div></header>
+    <header className="border-b border-border"><div className="container mx-auto px-6 py-5 flex items-center justify-between"><Link to="/#inicio"><img src={logo} alt="Charles e Pierre" className="h-14" /></Link><Button variant="ghost" asChild><Link to="/#videos"><ArrowLeft />Voltar</Link></Button></div></header>
     <div className="container mx-auto px-6 lg:px-12 py-12">
       <span className="text-sm text-muted-foreground uppercase">Charles e Pierre</span>
       <h1 className="font-display text-5xl md:text-7xl mt-3 mb-10">REDES SOCIAIS</h1>

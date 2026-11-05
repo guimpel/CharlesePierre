@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import heroImage from '@/assets/hero-stage.jpg';
-import fazendaImage from '@/assets/dupla-fazenda.png.asset.json';
+import fazendaImage from '@/assets/dupla-fazenda.webp';
 import logoCp from '@/assets/logo-cp.jpg';
 
-const heroImages = [heroImage, fazendaImage.url];
+const heroImages = [heroImage, fazendaImage];
 
 const Hero = () => {
   const [current, setCurrent] = useState(0);
