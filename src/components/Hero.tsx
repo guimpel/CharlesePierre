@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import heroImage from '@/assets/hero-stage.jpg';
 import fazendaImage from '@/assets/dupla-fazenda.webp';
-import logoCp from '@/assets/logo-cp.jpg';
+import logoOficial from '@/assets/logo-oficial.png';
 
 const heroImages = [heroImage, fazendaImage];
 
@@ -46,17 +46,24 @@ const Hero = () => {
       </div>
 
       {/* Content */}
+      {current === 0 ? (
+
       <div className="relative z-10 h-full flex flex-col items-center justify-center px-6">
         <div 
           className="text-center animate-slide-up"
           style={{ animationDelay: '0.3s', opacity: 0, animationFillMode: 'forwards' }}
         >
           {/* Logo/Nome */}
-          <img 
-            src={logoCp}
-            alt="CP Logo"
-            className="w-32 h-32 md:w-40 md:h-40 mx-auto mb-8 rounded-full object-cover border-2 border-foreground/20"
-          />
+          <div
+            className="w-32 h-32 md:w-40 md:h-40 mx-auto mb-8 rounded-full border-2 border-foreground/20 flex items-center justify-center"
+            style={{ opacity: 0.2 }}
+          >
+            <img
+              src={logoOficial}
+              alt="Charles e Pierre"
+              className="w-full h-full object-contain p-4 md:p-5"
+            />
+          </div>
           
           <h1 className="text-6xl md:text-8xl lg:text-9xl font-display text-foreground tracking-[0.1em] mb-4">
             CHARLES e PIERRE
@@ -79,6 +86,14 @@ const Hero = () => {
           </a>
         </div>
       </div>
+      ) : (
+
+        <h1
+          className="absolute z-20 bottom-[15%] left-1/2 -translate-x-1/2 text-6xl md:text-8xl lg:text-9xl font-display text-white tracking-[0.1em] whitespace-nowrap leading-none"
+        >
+          CHARLES e PIERRE
+        </h1>
+      )}
 
       {/* Social Icons - Bottom Right */}
       <div className="absolute bottom-8 right-8 flex flex-col gap-4 z-10">
