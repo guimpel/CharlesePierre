@@ -12,11 +12,10 @@ const eventTypeConfig: Record<EventType, { label: string; Icon: LucideIcon }> = 
 };
 
 const eventos = [
-  { day: '20', month: 'DEZ', city: 'São Paulo/SP', venue: 'Espaço das Américas', type: 'show' as EventType, status: 'available' },
-  { day: '27', month: 'DEZ', city: 'Rio de Janeiro/RJ', venue: 'Vivo Rio', type: 'show' as EventType, status: 'available' },
-  { day: '31', month: 'DEZ', city: 'Florianópolis/SC', venue: 'Music Park', type: 'show' as EventType, status: 'available' },
-  { day: '05', month: 'JAN', city: 'Belo Horizonte/MG', venue: 'Podcast Sertanejo', type: 'podcast' as EventType, status: 'soon' },
-  { day: '12', month: 'JAN', city: 'Curitiba/PR', venue: 'Programa do Ratinho', type: 'tv' as EventType, status: 'soon' },
+  { day: '08', month: 'JAN', year: '2027', city: 'Local a confirmar', venue: 'Programação em breve', type: 'show' as EventType, status: 'soon' },
+  { day: '15', month: 'JAN', year: '2027', city: 'Local a confirmar', venue: 'Programação em breve', type: 'show' as EventType, status: 'soon' },
+  { day: '16', month: 'FEV', year: '2027', city: 'Local a confirmar', venue: 'Programação em breve', type: 'show' as EventType, status: 'soon' },
+  { day: '23', month: 'FEV', year: '2027', city: 'Local a confirmar', venue: 'Programação em breve', type: 'show' as EventType, status: 'soon' },
 ];
 
 const Agenda = () => {
@@ -47,13 +46,13 @@ const Agenda = () => {
             const { label, Icon } = eventTypeConfig[evento.type];
             return (
               <div
-                key={`${evento.day}-${evento.month}-${evento.city}`}
+                key={`${evento.day}-${evento.month}-${evento.year}`}
                 className="group border-t border-foreground/10 py-6 md:py-8 flex flex-col md:flex-row md:items-center gap-4 md:gap-0 hover:bg-foreground/[0.02] transition-colors"
               >
                 {/* Date */}
                 <div className="md:w-32 flex-shrink-0 flex items-baseline gap-2">
                   <span className="text-4xl md:text-5xl font-display text-foreground">{evento.day}</span>
-                  <span className="text-lg font-display text-foreground/50">{evento.month}</span>
+                  <span className="text-lg font-display text-foreground/50">{evento.month} {evento.year}</span>
                 </div>
 
                 {/* Event Type Badge */}
@@ -77,18 +76,9 @@ const Agenda = () => {
 
                 {/* CTA */}
                 <div className="md:w-48 flex-shrink-0 md:text-right">
-                  {evento.status === 'available' ? (
-                    <a
-                      href="mailto:contato@charlespierre.com.br"
-                      className="inline-block px-8 py-3 bg-foreground text-background font-body font-semibold text-sm tracking-wider uppercase hover:bg-foreground/90 transition-colors"
-                    >
-                      Comparecer
-                    </a>
-                  ) : (
-                    <span className="inline-block px-8 py-3 border border-foreground/20 text-foreground/40 font-body text-sm tracking-wider uppercase">
-                      Em Breve
-                    </span>
-                  )}
+                  <span className="inline-block px-8 py-3 border border-foreground/20 text-foreground/40 font-body text-sm tracking-wider uppercase">
+                    Em breve
+                  </span>
                 </div>
               </div>
             );
