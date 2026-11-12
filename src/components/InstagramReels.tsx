@@ -16,12 +16,34 @@ type Catalogo = {
   reels: Reel[];
 };
 
-const genericasWebp = [
-  'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=480&h=600&fit=crop&fm=webp&q=75',
-  'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=480&h=600&fit=crop&fm=webp&q=75',
-  'https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=480&h=600&fit=crop&fm=webp&q=75',
-  'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=480&h=600&fit=crop&fm=webp&q=75',
-];
+// Capas autênticas dos Reels arquivadas localmente. Sem URL temporária da CDN.
+const CapaReel = ({ reel }: { reel: Reel }) => {
+  const codigo = codigoReel(reel.url);
+  const [etapa, setEtapa] = useState(0);
+  const capaLocal = codigo ? import.meta.env.BASE_URL + 'instagram/capas/' + codigo + '.jpg' : null;
+  const origem = etapa === 0 ? capaLocal : etapa === 1 ? reel.image : null;
+  const semente = (reel.id || reel.title).split('').reduce((ac, ch) => ac + ch.charCodeAt(0), 0);
+  const cor1 = (semente * 13) % 360;
+  const cor2 = (cor1 + 67) % 360;
+
+  if (!origem) {
+    return (
+      <div className="w-full h-full flex items-center justify-center p-5 text-center"
+        style={{ background: `linear-gradient(145deg,hsl(${cor1} 31% 23%),hsl(${cor2} 37% 10%))` }}>
+        <span className="font-display text-xl md:text-2xl tracking-wider text-white drop-shadow-lg">{reel.title}</span>
+      </div>
+    );
+  }
+  return (
+    <img
+      src={origem}
+      alt={'Capa original do Reel ' + reel.title}
+      loading="lazy"
+      onError={() => setEtapa(valor => valor + 1)}
+      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+    />
+  );
+};
 
 const codigoReel = (url: string): string | null => {
   const match = /^https:\/\/www\.instagram\.com\/reel\/([A-Za-z0-9_-]+)\/?$/.exec(url);
@@ -128,7 +150,7 @@ const InstagramReels = ({ ativo = true, aoAtivar }: { ativo?: boolean; aoAtivar?
 
         {estado === 'pronto' && (
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-5">
-            {reels.map((reel, indice) => (
+            {reels.map((reel) => (
               <button
                 type="button"
                 key={reel.id}
@@ -141,17 +163,7 @@ const InstagramReels = ({ ativo = true, aoAtivar }: { ativo?: boolean; aoAtivar?
                 }
               >
                 <div className="relative aspect-[4/5] bg-muted overflow-hidden">
-                  <img
-                    src={reel.image || genericasWebp[indice % genericasWebp.length]}
-                    alt={'Miniatura de ' + reel.title}
-                    loading="lazy"
-                    referrerPolicy="no-referrer"
-                    onError={(e) => {
-                      const fallback = genericasWebp[indice % genericasWebp.length];
-                      if (e.currentTarget.src !== fallback) e.currentTarget.src = fallback;
-                    }}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
+                  <CapaReel key={reel.id} reel={reel} />
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/5 transition-colors" />
                   <div className="absolute inset-0 flex items-center justify-center">
                     <span className="w-12 h-12 flex items-center justify-center border border-white/90 bg-black/40 text-white">
