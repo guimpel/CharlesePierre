@@ -5,6 +5,7 @@ import logoFull from '@/assets/logo-oficial.png';
 const navLinks = [
   { href: '#inicio', label: 'HOME' },
   { href: '#sobre', label: 'SOBRE' },
+  { href: '/historia', label: 'HISTÓRIA' },
   { href: '#agenda', label: 'AGENDA' },
   { href: '#musica', label: 'DISCOGRAFIA' },
   { href: '#videos', label: 'VÍDEOS' },
@@ -40,7 +41,7 @@ const Header = () => {
         </a>
 
         {/* Desktop Nav */}
-        <ul className="hidden lg:flex items-center gap-8">
+        <ul className="hidden lg:flex items-center gap-5">
           {navLinks.map((link) => (
             <li key={link.href}>
               <a
