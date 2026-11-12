@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Videos from '@/components/Videos';
+import InstagramReels from '@/components/InstagramReels';
 import logo from '@/assets/logo-oficial.png';
 
 const Videoteca = () => {
@@ -17,7 +18,10 @@ const Videoteca = () => {
         </Link>
       </div>
     </header>
-    <main><Videos paginaCompleta /></main>
+    <main>
+      <Videos paginaCompleta />
+      <InstagramReels />
+    </main>
   </div>
   );
 };
