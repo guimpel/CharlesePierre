@@ -28,7 +28,7 @@ const codigoReel = (url: string): string | null => {
   return match?.[1] ?? null;
 };
 
-const InstagramReels = () => {
+const InstagramReels = ({ ativo = true, aoAtivar }: { ativo?: boolean; aoAtivar?: () => void }) => {
   const [reels, setReels] = useState<Reel[]>([]);
   const [selecionado, setSelecionado] = useState<Reel | null>(null);
   const [estado, setEstado] = useState<'carregando' | 'pronto' | 'erro'>('carregando');
@@ -62,6 +62,7 @@ const InstagramReels = () => {
   }, []);
 
   const escolher = (reel: Reel) => {
+    aoAtivar?.();
     setSelecionado(reel);
     window.requestAnimationFrame(() => {
       playerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -89,7 +90,7 @@ const InstagramReels = () => {
           <p className="font-body text-foreground/60">Nenhum Reel disponível no momento.</p>
         )}
 
-        {selecionado && codigoReel(selecionado.url) && (
+        {ativo && selecionado && codigoReel(selecionado.url) && (
           <div ref={playerRef} className="scroll-mt-20 max-w-4xl mx-auto mb-14 border border-foreground/15 p-4 md:p-6 bg-secondary">
             <div className="flex items-start justify-between gap-4 mb-5">
               <div>
