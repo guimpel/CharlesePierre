@@ -22,9 +22,22 @@ const imagemYoutubeWebp = (id: string) =>
 const imagemYoutubeAlternativa = (id: string) =>
   'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg';
 
-const Videos = ({ paginaCompleta = false }: { paginaCompleta?: boolean }) => {
+const Videos = ({
+  paginaCompleta = false,
+  ativo = true,
+  aoAtivar,
+}: {
+  paginaCompleta?: boolean;
+  ativo?: boolean;
+  aoAtivar?: () => void;
+}) => {
   const [videos, setVideos] = useState<VideoItem[]>([]);
   const [estado, setEstado] = useState<'carregando' | 'pronto' | 'erro'>('carregando');
+  const [reproduzirAoAbrir, setReproduzirAoAbrir] = useState(false);
+  useEffect(() => {
+    if (!ativo) setReproduzirAoAbrir(false);
+  }, [ativo]);
+
   const location = useLocation();
   const idSelecionado = new URLSearchParams(location.search).get('v');
 
@@ -129,15 +142,38 @@ const Videos = ({ paginaCompleta = false }: { paginaCompleta?: boolean }) => {
           <div className="space-y-10">
             <div className="max-w-5xl mx-auto">
               <div className="aspect-video bg-black border border-foreground/10">
-                <iframe
-                  key={selecionado.id}
-                  src={'https://www.youtube-nocookie.com/embed/' + selecionado.id + '?rel=0&playsinline=1&controls=1'}
-                  title={'Reproduzir ' + selecionado.title}
-                  className="w-full h-full"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  allowFullScreen
-                />
+                {ativo ? (
+                  <iframe
+                    key={selecionado.id}
+                    src={'https://www.youtube-nocookie.com/embed/' + selecionado.id + '?rel=0&playsinline=1&controls=1&autoplay=' + (reproduzirAoAbrir ? '1' : '0')}
+                    title={'Reproduzir ' + selecionado.title}
+                    className="w-full h-full"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                  />
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => { setReproduzirAoAbrir(true); aoAtivar?.(); }}
+                    className="group relative block w-full h-full text-white"
+                    aria-label={'Reproduzir ' + selecionado.title}
+                  >
+                    <img
+                      src={imagemYoutubeWebp(selecionado.id)}
+                      alt=""
+                      className="w-full h-full object-cover opacity-65"
+                      onError={(evento) => {
+                        const imagem = evento.currentTarget;
+                        if (!imagem.src.endsWith('hqdefault.jpg')) imagem.src = imagemYoutubeAlternativa(selecionado.id);
+                      }}
+                    />
+                    <span className="absolute inset-0 flex flex-col items-center justify-center gap-4 bg-black/25 group-hover:bg-black/10 transition-colors">
+                      <Play className="w-14 h-14 drop-shadow-lg" />
+                      <span className="font-body text-sm tracking-widest uppercase">Reproduzir este vídeo</span>
+                    </span>
+                  </button>
+                )}
               </div>
               <h3 className="mt-5 text-2xl md:text-3xl font-display text-foreground tracking-wider">
                 {selecionado.title}
@@ -151,12 +187,16 @@ const Videos = ({ paginaCompleta = false }: { paginaCompleta?: boolean }) => {
             </div>
             <div>
               <h3 className="text-xl font-display text-foreground tracking-wider mb-5">ESCOLHA OUTRO VÍDEO</h3>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-4 md:gap-5">
                 {videos.map((video) => (
                   <Link
                     key={video.id}
                     to={'/videos?v=' + video.id}
-                    onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                    onClick={() => {
+                      setReproduzirAoAbrir(true);
+                      aoAtivar?.();
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }}
                     aria-current={selecionado.id === video.id ? 'page' : undefined}
                     className={
                       'group block overflow-hidden border transition-colors ' +
