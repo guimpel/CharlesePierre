@@ -1,4 +1,6 @@
 import guitarImage from '@/assets/guitar-hero.jpg';
+import { Link } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
 
 const Sobre = () => {
   return (
@@ -44,6 +46,8 @@ const Sobre = () => {
                 a dupla se consolidou como referência no cenário sertanejo mineiro.
               </p>
             </div>
+
+            <Link to="/historia" className="inline-flex items-center gap-3 mt-8 px-6 py-3 border border-accent/60 text-foreground hover:bg-accent/10 font-body text-sm uppercase tracking-widest transition-colors">Conheça nossa história <ArrowRight size={17} /></Link>
 
             {/* Stats */}
             <div className="flex gap-12 mt-12 pt-8 border-t border-foreground/10">
