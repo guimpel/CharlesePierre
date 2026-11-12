@@ -1,8 +1,11 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Videos from '@/components/Videos';
 import logo from '@/assets/logo-oficial.png';
 
-const Videoteca = () => (
+const Videoteca = () => {
+  useEffect(() => { window.scrollTo(0, 0); }, []);
+  return (
   <div className="min-h-screen bg-background">
     <header className="border-b border-foreground/10 bg-background">
       <div className="container mx-auto px-6 lg:px-12 py-5 flex flex-wrap items-center justify-between gap-4">
@@ -16,6 +19,7 @@ const Videoteca = () => (
     </header>
     <main><Videos paginaCompleta /></main>
   </div>
-);
+  );
+};
 
 export default Videoteca;
