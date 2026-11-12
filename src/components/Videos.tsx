@@ -1,93 +1,137 @@
-import { Play } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { Film, Play, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
-const videos = [
-  {
-    title: 'São Teus Olhos - Disco Completo 1995',
-    thumbnail: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&q=80',
-    url: 'https://www.youtube.com/watch?v=ZiSHFQNeq9U',
-  },
-  {
-    title: 'Só Uma Vez - Charles e Pierre Vol.5',
-    thumbnail: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800&q=80',
-    url: 'https://www.youtube.com/watch?v=trfUyhqu1YI',
-  },
-  {
-    title: 'Me Dê Um Sinal (1990)',
-    thumbnail: 'https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=800&q=80',
-    url: 'https://www.youtube.com/watch?v=78xntAIdgl8',
-  },
-];
+type VideoItem = {
+  id: string;
+  title: string;
+  file: string;
+  poster?: string;
+  description?: string;
+};
 
-const Videos = () => {
+const base = import.meta.env.BASE_URL;
+
+const localPath = (path: string) => {
+  const clean = path.replace(/^\/+/, '');
+  // Os arquivos de vídeo devem permanecer na pasta public/videos.
+  return `${base}videos/${encodeURI(clean)}`;
+};
+
+const Videos = ({ paginaCompleta = false }: { paginaCompleta?: boolean }) => {
+  const [videos, setVideos] = useState<VideoItem[]>([]);
+  const [selecionado, setSelecionado] = useState<string | null>(null);
+  const [carregando, setCarregando] = useState(true);
+  const [erro, setErro] = useState(false);
+  const [falhaReproducao, setFalhaReproducao] = useState(false);
+
+  useEffect(() => {
+    let ativo = true;
+    fetch(`${base}videos/catalogo.json`)
+      .then((resposta) => {
+        if (!resposta.ok) throw new Error('Catálogo indisponível');
+        return resposta.json();
+      })
+      .then((dados: unknown) => {
+        if (!ativo) return;
+        if (!Array.isArray(dados)) throw new Error('Catálogo inválido');
+        const lista = dados.filter(
+          (item): item is VideoItem =>
+            item !== null &&
+            typeof item === 'object' &&
+            typeof item.id === 'string' &&
+            typeof item.title === 'string' &&
+            typeof item.file === 'string' &&
+            /^[^/\\]+\.(mp4|webm|ogg)$/i.test(item.file)
+        );
+        setVideos(lista);
+        setSelecionado(lista[0]?.id ?? null);
+        setErro(false);
+      })
+      .catch(() => {
+        if (ativo) setErro(true);
+      })
+      .finally(() => {
+        if (ativo) setCarregando(false);
+      });
+    return () => { ativo = false; };
+  }, []);
+
+  const atual = videos.find((video) => video.id === selecionado) ?? videos[0];
+  const exibidos = paginaCompleta ? videos : videos.slice(0, 6);
+
   return (
     <section id="videos" className="py-24 md:py-32 bg-secondary">
       <div className="container mx-auto px-6 lg:px-12">
-        {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-16">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12 gap-6">
           <div>
             <span className="text-sm font-body font-medium text-foreground/50 tracking-[0.3em] uppercase mb-4 block">
-              Assista
+              Assista aqui
             </span>
-            <h2 className="text-5xl md:text-7xl font-display text-foreground tracking-wider">
-              VÍDEOS
-            </h2>
+            <h2 className="text-5xl md:text-7xl font-display text-foreground tracking-wider">VÍDEOS</h2>
           </div>
-          <a
-            href="https://www.youtube.com/@charlesepierre"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-6 md:mt-0 text-sm font-body font-medium text-foreground/60 hover:text-foreground tracking-wider uppercase transition-colors"
-          >
-            Ver Todos →
-          </a>
+          {!paginaCompleta && (
+            <Link to="/videos" className="inline-flex items-center gap-2 text-sm font-body font-medium text-foreground/70 hover:text-foreground tracking-wider uppercase transition-colors">
+              Ver todos <ArrowRight size={17} />
+            </Link>
+          )}
         </div>
 
-        {/* Videos Grid */}
-        <div className="grid md:grid-cols-3 gap-6">
-          {videos.map((video, index) => (
-            <a
-              key={video.title}
-              href={video.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative aspect-video overflow-hidden bg-muted"
-            >
-              <img
-                src={video.thumbnail}
-                alt={video.title}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-background/60 group-hover:bg-background/40 transition-colors duration-300" />
-              
-              {/* Play Button */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-16 h-16 border-2 border-foreground flex items-center justify-center group-hover:bg-foreground transition-colors duration-300">
-                  <Play className="w-6 h-6 text-foreground group-hover:text-background ml-1 transition-colors duration-300" />
-                </div>
+        {carregando ? (
+          <p className="text-foreground/60 font-body">Carregando videoteca…</p>
+        ) : erro ? (
+          <p className="text-foreground/60 font-body">Videoteca temporariamente indisponível.</p>
+        ) : videos.length === 0 ? (
+          <div className="border border-foreground/15 bg-background/30 px-8 py-16 text-center">
+            <Film className="w-10 h-10 mx-auto mb-5 text-foreground/50" aria-hidden="true" />
+            <h3 className="text-3xl font-display text-foreground tracking-wider mb-3">VÍDEOS EM BREVE</h3>
+            <p className="text-foreground/60 font-body">
+              Os videoclipes de Charles & Pierre serão reproduzidos diretamente neste site.
+            </p>
+          </div>
+        ) : (
+          <div className="space-y-10">
+            <div className="mx-auto max-w-5xl">
+              <div className="aspect-video bg-black overflow-hidden">
+                <video
+                  key={atual.id}
+                  controls
+                  playsInline
+                  preload="metadata"
+                  className="w-full h-full"
+                  poster={atual.poster ? localPath(atual.poster) : undefined}
+                  onError={() => setFalhaReproducao(true)}
+                  onLoadedMetadata={() => setFalhaReproducao(false)}
+                >
+                  <source src={localPath(atual.file)} type={/\.webm$/i.test(atual.file) ? 'video/webm' : /\.ogg$/i.test(atual.file) ? 'video/ogg' : 'video/mp4'} />
+                  Seu navegador não suporta reprodução de vídeo HTML5.
+                </video>
               </div>
-
-              {/* Title */}
-              <div className="absolute bottom-0 left-0 right-0 p-4">
-                <h3 className="text-lg font-display text-foreground tracking-wider">
-                  {video.title}
-                </h3>
-              </div>
-            </a>
-          ))}
-        </div>
-
-        {/* YouTube Subscribe */}
-        <div className="mt-12 text-center">
-          <a
-            href="https://www.youtube.com/@charlesepierre"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-8 py-4 bg-[#FF0000] text-white font-body font-semibold text-sm tracking-wider uppercase hover:bg-[#CC0000] transition-colors"
-          >
-            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
-            Inscreva-se no Canal
-          </a>
-        </div>
+              <h3 className="font-display tracking-wider text-2xl md:text-3xl mt-5 text-foreground">{atual.title}</h3>
+              {atual.description && <p className="mt-2 font-body text-foreground/60">{atual.description}</p>}
+              {falhaReproducao && <p className="mt-3 font-body text-sm text-foreground/70">Não foi possível carregar este vídeo. Verifique se o arquivo está publicado.</p>}
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {exibidos.map((video) => (
+                <button
+                  type="button"
+                  key={video.id}
+                  onClick={() => { setSelecionado(video.id); setFalhaReproducao(false); }}
+                  aria-current={atual.id === video.id ? 'true' : undefined}
+                  className={`text-left group border transition-colors ${atual.id === video.id ? 'border-foreground/70' : 'border-foreground/10 hover:border-foreground/40'}`}
+                >
+                  <div className="relative aspect-video bg-background/70 flex items-center justify-center overflow-hidden">
+                    {video.poster ? (
+                      <img src={localPath(video.poster)} alt="" loading="lazy" className="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:opacity-100 transition-opacity" />
+                    ) : <Film className="w-10 h-10 text-foreground/40" aria-hidden="true" />}
+                    <span className="relative z-10 flex items-center justify-center w-12 h-12 rounded-full bg-background/80 text-foreground"><Play size={20} /></span>
+                  </div>
+                  <div className="p-4 font-display text-lg tracking-wider text-foreground">{video.title}</div>
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
