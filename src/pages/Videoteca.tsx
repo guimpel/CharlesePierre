@@ -1,10 +1,11 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Videos from '@/components/Videos';
 import InstagramReels from '@/components/InstagramReels';
 import logo from '@/assets/logo-oficial.png';
 
 const Videoteca = () => {
+  const [playerAtivo, setPlayerAtivo] = useState<'youtube' | 'instagram'>('youtube');
   useEffect(() => { window.scrollTo(0, 0); }, []);
   return (
   <div className="min-h-screen bg-background">
@@ -19,8 +20,8 @@ const Videoteca = () => {
       </div>
     </header>
     <main>
-      <Videos paginaCompleta />
-      <InstagramReels />
+      <Videos paginaCompleta ativo={playerAtivo === 'youtube'} aoAtivar={() => setPlayerAtivo('youtube')} />
+      <InstagramReels ativo={playerAtivo === 'instagram'} aoAtivar={() => setPlayerAtivo('instagram')} />
     </main>
   </div>
   );
