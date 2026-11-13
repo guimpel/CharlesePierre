@@ -1,0 +1,19 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="robots" content="noindex,nofollow"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Teste interno de anexo privado</title><style>body{background:#000;color:#fff;font:17px Arial;padding:40px}button{background:#f4c025;padding:16px;border:0;color:#000;font-weight:bold}pre{white-space:pre-wrap;color:#eee}</style></head><body><h1>Teste interno do envio de anexo</h1><p>Nenhum depoimento real será enviado. O arquivo de teste é uma imagem PNG de 1 pixel.</p><button id="go">ENVIAR TESTE COM PNG</button><pre id="saida">Aguardando teste.</pre><script>
+document.querySelector('#go').onclick=async function(){
+ this.disabled=true;document.querySelector('#saida').textContent='Enviando…';
+ try{
+  const data='iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+/VkMAAAAASUVORK5CYII=';
+  const bytes=Uint8Array.from(atob(data),c=>c.charCodeAt(0));
+  const f=new File([bytes],'teste-tecnico-1px.png',{type:'image/png'});
+  const form=new FormData();
+  form.set('nome','TESTE ANEXO NAO PUBLICAR');
+  form.set('cidade','Teste');
+  form.set('depoimento','Teste tecnico de anexo PNG, manter privado e depois excluir.');
+  form.set('autorizacao','sim');
+  form.set('arquivo_1',f);
+  const r=await fetch('https://rbmacrxdasqhqtykbkvj.supabase.co/functions/v1/charles-livro',{method:'POST',body:form});
+  const json=await r.json();
+  document.querySelector('#saida').textContent='HTTP '+r.status+' — '+JSON.stringify(json,null,2);
+ }catch(e){document.querySelector('#saida').textContent='ERRO: '+e.message;}
+};
+</script></body></html>
