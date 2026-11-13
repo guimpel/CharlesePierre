@@ -33,7 +33,13 @@ async function load(){
 }
 for(const b of actions.querySelectorAll('button'))b.addEventListener('click',async()=>{
  const op=b.dataset.op;
- if(op==='excluir'&&!confirm('Excluir definitivamente este depoimento e os anexos?'))return;
+ if(op==='excluir'&&b.dataset.confirmed!=='true'){
+  b.dataset.confirmed='true';
+  b.textContent='CONFIRMAR EXCLUSÃO DEFINITIVA';
+  result.className='error';
+  result.textContent='Confirme a exclusão clicando novamente no botão vermelho. Esta ação não poderá ser desfeita.';
+  return;
+}
  for(const btn of actions.querySelectorAll('button'))btn.disabled=true;
  try{
   const r=await fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id,token,action:op}),referrerPolicy:'no-referrer'});
