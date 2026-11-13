@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, BookOpen, CalendarDays, Disc3, FileText, Headphones, Images, Music2, Play, Radio, X } from 'lucide-react';
 import logo from '@/assets/logo-oficial.png';
@@ -15,6 +15,7 @@ type Documento = {
   tipo: 'acervo' | 'pdf' | 'jornal' | 'video';
   pagina?: number;
   observacao?: string;
+  origem?: string;
 };
 type Marco = {
   id: string;
@@ -36,7 +37,7 @@ type Estacao = {
   sequencia: string;
   playlist: string;
   radio: string;
-  audio: string;
+  programa?: string;
 };
 
 const capas = [
@@ -83,9 +84,10 @@ const marcos: Marco[] = [
   {
     id: 'cruzilia', ano: '1993–94', tipo: 'documento', titulo: 'Apresentação registrada em Cruzília',
     descricao: 'Jornal municipal de dezembro de 1994 menciona um show de Charles e Pierre.',
-    detalhe: 'O jornal Ação Participativa, de Cruzília (MG), número 25, dezembro de 1994, inclui uma apresentação de Charles e Pierre entre as atividades culturais de 1993–1994. O documento de época não fixa, na lista consultada, o dia exato do show. Ainda não existe captura da página original autorizada no acervo do site; por isso não mostramos um falso recorte.',
-    legenda: 'Documento de época • Cruzília/MG',
-    documentos: [{nome:'Jornal Ação Participativa — nº 25, dez. 1994',endereco:'https://pt.scribd.com/document/1032043197/Jornal-Acao-Participativa-1994-Dezembro-Numero-25',tipo:'jornal',observacao:'O portal Scribd pode restringir a incorporação da digitalização original.'}]
+    detalhe: 'O jornal Ação Participativa, edição nº 25 de dezembro de 1994, registra a apresentação de Charles e Pierre na relação cultural de Cruzília, Minas Gerais. A página 13 foi preservada integralmente.',
+    imagem: import.meta.env.BASE_URL+'historia/documentos/cruzilia-1994-pagina-13.webp',
+    legenda: 'Jornal Ação Participativa • página 13 • dezembro de 1994',
+    documentos: [{nome:'Ação Participativa — página 13 (1994)',endereco:import.meta.env.BASE_URL+'historia/documentos/cruzilia-1994-pagina-13.pdf',tipo:'pdf',origem:'https://pt.scribd.com/document/1032043197/Jornal-Acao-Participativa-1994-Dezembro-Numero-25'}]
   },
   {
     id: 'lp1994', ano: '1994', tipo: 'disco', titulo: 'Por Te Amar Demais',
@@ -136,8 +138,8 @@ const marcos: Marco[] = [
   },
   {
     id: 'radio2026', ano: '2026', tipo: 'radio', titulo: 'As gravações continuam no rádio',
-    descricao: 'Playlists digitais recentes registram músicas de Charles & Pierre em emissoras.',
-    detalhe: 'Rastreadores públicos de programação registram Me Dê Um Sinal na Rádio Montes Claros 98 FM, Eu Digo Sim, Você Diz Não na Guanaã FM de Guanhães e Diferenças na 106 FM de Blumenau. Os horários aparecem nas playlists consultadas em 12 de novembro de 2026. As páginas são dinâmicas e não preservam necessariamente o dia exato de cada execução; esses registros não são prova de execução em 1990.',
+    descricao: 'Em 2026, músicas da dupla aparecem em rádios de Minas Gerais e Santa Catarina.',
+    detalhe: 'Me Dê Um Sinal — Montes Claros 98 FM, 20h40; Eu Digo Sim, Você Diz Não — Guanaã FM, 23h22; Diferenças — 106 FM Blumenau, 02h47. São horários de execuções registradas em 2026.',
     legenda: 'Monitoramento de playlists digitais • 2026',
     documentos: [{nome:'Montes Claros 98 FM — playlist',endereco:'https://onlineradiobox.com/br/98montesclaros/playlist/1',tipo:'acervo'},
       {nome:'Guanaã FM — playlist',endereco:'https://onlineradiobox.com/br/guanaa879/playlist/5',tipo:'acervo'},
@@ -147,28 +149,26 @@ const marcos: Marco[] = [
 
 const radios: Estacao[] = [
   {
-    id:'montes',nome:'Montes Claros 98 FM',local:'Montes Claros • Minas Gerais',
-    faixa:'Me Dê Um Sinal',horario:'20h40 na playlist consultada',
-    sequencia:'Na mesma sequência aparecem Eduardo Costa, Gian & Giovani, Zezé Di Camargo & Luciano e Chico Rey & Paraná. Não significa participação conjunta ou audiência equivalente.',
+    id:'montes',nome:'Montes Claros 98 FM',local:'Montes Claros • MG',
+    faixa:'Me Dê Um Sinal',horario:'20h40',
+    programa:'Buteco 98 • 19h às 21h',
+    sequencia:'Registro em playlist de 2026',
     playlist:'https://onlineradiobox.com/br/98montesclaros/playlist/1',
-    radio:'https://onlineradiobox.com/br/98montesclaros/',
-    audio:'musicas/vol-01/01-Me_Dê_Um_Sinal_vol1.mp3'
+    radio:'https://montesclaros.com/aovivo/stream98.asp'
   },
   {
-    id:'guanaa',nome:'Guanaã FM 87,9',local:'Guanhães • Minas Gerais',
-    faixa:'Eu Digo Sim, Você Diz Não',horario:'23h22 na playlist consultada',
-    sequencia:'Registro digital recente. A playlist não comprova a data exata da execução nem a rotação histórica da música.',
+    id:'guanaa',nome:'Guanaã FM 87,9',local:'Guanhães • MG',
+    faixa:'Eu Digo Sim, Você Diz Não',horario:'23h22',
+    sequencia:'Registro em playlist de 2026',
     playlist:'https://onlineradiobox.com/br/guanaa879/playlist/5',
-    radio:'https://onlineradiobox.com/br/guanaa879/',
-    audio:'musicas/vol-03/07-Eu_Digo_Sim_Você_Diz_Não_vol3.mp3'
+    radio:'https://onlineradiobox.com/br/guanaa879/'
   },
   {
-    id:'106',nome:'106 FM',local:'Blumenau • Santa Catarina',
-    faixa:'Diferenças',horario:'02h47 na playlist consultada',
-    sequencia:'O rastreador lista a faixa entre músicas de outros intérpretes sertanejos. A rádio exibida é de Santa Catarina, não de Minas Gerais.',
+    id:'106',nome:'106 FM',local:'Blumenau • SC',
+    faixa:'Diferenças',horario:'02h47',
+    sequencia:'Registro em playlist de 2026',
     playlist:'https://onlineradiobox.com/br/mix1063/playlist/5',
-    radio:'https://onlineradiobox.com/br/mix1063/',
-    audio:'musicas/vol-03/09-Diferenças_vol3.mp3'
+    radio:'https://tudoradio.com/player/radio/1029-106-fm'
   },
 ];
 
@@ -185,15 +185,11 @@ const Historia = () => {
   const [filtro, setFiltro] = useState<'todos' | 'disco' | 'documento' | 'foto' | 'internet' | 'radio'>('todos');
   const [aberto, setAberto] = useState<Marco | null>(null);
   const [foto, setFoto] = useState<(typeof capas)[number] | null>(null);
-  const [estacao, setEstacao] = useState<Estacao | null>(null);
   const [docAtual, setDocAtual] = useState(0);
-  const audioRef = useRef<HTMLAudioElement>(null);
 
   const fechar = () => {
-    audioRef.current?.pause();
     setAberto(null);
     setFoto(null);
-    setEstacao(null);
     setDocAtual(0);
   };
   useEffect(() => {
@@ -208,7 +204,7 @@ const Historia = () => {
   }, []);
 
   const abrirMarco = (m: Marco) => { setDocAtual(0); setAberto(m); };
-  const dialogo = !!aberto || !!foto || !!estacao;
+  const dialogo = !!aberto || !!foto;
   const doc = aberto?.documentos[docAtual];
   const previewDocumento = doc?.tipo === 'pdf' ? doc.endereco + (doc.pagina ? '#page=' + doc.pagina : '') : null;
   const youtube = doc?.tipo === 'video' ? 'https://www.youtube-nocookie.com/embed/aYFsB4KTZg8' : null;
@@ -343,20 +339,29 @@ const Historia = () => {
         </section>}
 
         {aba==='radios' && <section className="max-w-7xl mx-auto px-5 md:px-8 py-16 md:py-24">
-          <span className="text-[#d3a773] uppercase tracking-[.24em] text-xs">Registro digital contemporâneo</span>
-          <h2 className="font-display text-4xl md:text-6xl mt-3">A MÚSICA CONTINUA NO AR</h2>
-          <p className="max-w-3xl text-[#c0ae95] mt-5 leading-8">Em playlists consultadas em 12/11/2026, músicas de Charles & Pierre aparecem em emissoras brasileiras. Os horários abaixo são os exibidos nos registros — não a promessa de que a música esteja tocando agora.</p>
+          <span className="text-[#d3a773] uppercase tracking-[.24em] text-xs">Rádios • 2026</span>
+          <h2 className="font-display text-4xl md:text-6xl mt-3">CHARLES & PIERRE NO RÁDIO</h2>
+          <p className="max-w-3xl text-[#c0ae95] mt-5">Ouça as emissoras que registraram músicas da dupla em 2026.</p>
           <div className="grid lg:grid-cols-3 gap-5 mt-10">
-            {radios.map((r,i)=><button key={r.id} onClick={()=>setEstacao(r)} className={'cp-card text-left border p-6 md:p-7 ' + (i===0?'bg-[#2e2518] border-[#c8a36d]':'bg-[#1c1713] border-[#80613b]/40')}>
-              <div className="flex items-center justify-between"><Radio className="text-[#ddb67c]" size={28}/><span className="uppercase text-[10px] tracking-widest text-[#e7c28b]">Playlist verificada</span></div>
-              <h3 className="font-display text-2xl mt-5">{r.nome}</h3>
-              <p className="text-[#a9957f] text-xs mt-1">{r.local}</p>
-              <div className="text-[#e5c18a] font-display text-xl mt-7">{r.faixa}</div>
-              <p className="mt-2 text-[#c5ad8f] text-xs tracking-widest">{r.horario}</p>
-              <div className="mt-6 py-3 border-t border-[#916b43]/30 flex items-center justify-between text-xs uppercase tracking-widest text-[#e1bc84]"><span>Ouvir e ver fonte</span><Headphones size={19}/></div>
-            </button>)}
+            {radios.map((r,i)=>(
+              <article key={r.id} className={'cp-card border p-6 md:p-7 ' + (i===0?'bg-[#2e2518] border-[#c8a36d]':'bg-[#1c1713] border-[#80613b]/40')}>
+                <div className="flex items-center justify-between"><Radio className="text-[#ddb67c]" size={28}/><span className="uppercase text-[10px] tracking-widest text-[#e7c28b]">2026</span></div>
+                <h3 className="font-display text-2xl mt-5">{r.nome}</h3>
+                <p className="text-[#a9957f] text-xs mt-1">{r.local}</p>
+                <div className="text-[#e5c18a] font-display text-xl mt-7">{r.faixa}</div>
+                <p className="mt-2 text-[#c5ad8f] text-sm">Tocou às {r.horario}</p>
+                {r.programa && <p className="mt-2 text-[#e1c39c] text-sm">{r.programa}</p>}
+                <a href={r.radio} target="_blank" rel="noopener noreferrer"
+                  className="mt-7 inline-flex items-center justify-center w-full gap-2 py-3 bg-[#c69e66] hover:bg-[#e0b77e] text-[#20140b] text-xs font-semibold uppercase tracking-widest">
+                  <Headphones size={18}/> Ouvir rádio ao vivo <ArrowRight size={16}/>
+                </a>
+                <a href={r.playlist} target="_blank" rel="noopener noreferrer"
+                  className="inline-block mt-4 text-xs text-[#bda789] hover:text-white underline underline-offset-4">
+                  Registro da música na playlist
+                </a>
+              </article>
+            ))}
           </div>
-          <p className="max-w-3xl mt-8 text-xs text-[#a89276] leading-7">As listas das rádios mudam com o tempo. Não é possível inferir desempenho comercial, audiência, posição em ranking ou execução na década de 1990 apenas com o histórico digital atual.</p>
         </section>}
       </main>
 
@@ -383,32 +388,15 @@ const Historia = () => {
               {doc && <>
                 {previewDocumento && <div className="aspect-[3/4] sm:aspect-[4/3] bg-[#e9e7e0]"><iframe title={doc.nome} loading="lazy" className="w-full h-full" src={previewDocumento}/></div>}
                 {youtube && <div className="aspect-video bg-black"><iframe title="Vídeo histórico" className="w-full h-full" src={youtube} allow="autoplay; encrypted-media; picture-in-picture" allowFullScreen/></div>}
-                {doc.tipo==='jornal' && <div className="p-7 bg-[#302519] border border-[#a17d51]/40"><FileText size={28} className="text-[#c7a373]"/><h4 className="font-display text-2xl mt-3">Menção de época identificada</h4><p className="text-[#d3bda0] mt-3 leading-7">O informativo de Cruzília registra um “Show com Charles e Pierre” entre as atividades culturais de 1993–1994.</p><p className="mt-4 text-[#a9947e] text-sm">Não há imagem da página original arquivada no site. Este bloco é uma descrição documental — não um recorte de jornal simulado.</p></div>}
+
                 {doc.tipo==='acervo' && <div className="bg-[#302519] p-6 border border-[#a17d51]/30"><BookOpen size={28} className="text-[#c7a373]"/><p className="text-sm leading-7 text-[#b6a38d] mt-3">Esta ficha foi transcrita e contextualizada acima. A fonte original é uma página de outro acervo; o site não reproduz artificialmente sua aparência.</p></div>}
-                <div className="mt-5 text-xs leading-6 text-[#b7a18a]"><b className="text-[#e3bf88]">Fonte:</b> {doc.nome}<br/><span className="break-all">{doc.endereco}</span>{doc.observacao && <p>{doc.observacao}</p>}
-                <a href={doc.endereco} target="_blank" rel="noopener noreferrer" className="inline-flex items-center mt-3 underline underline-offset-4 text-[#e4b980]">Acessar origem se a incorporação estiver bloqueada ↗</a></div>
+                <div className="mt-5 text-xs leading-6 text-[#b7a18a]"><b className="text-[#e3bf88]">Fonte:</b> {doc.nome}<br/><span className="break-all">{doc.origem || doc.endereco}</span>{doc.observacao && <p>{doc.observacao}</p>}
+                {doc.tipo !== 'pdf' && <a href={doc.endereco} target="_blank" rel="noopener noreferrer" className="inline-flex items-center mt-3 underline underline-offset-4 text-[#e4b980]">Abrir fonte original ↗</a>}</div>
               </>}
             </div>
           </>}
           {foto && <div className="p-6 md:p-9"><span className="text-xs uppercase tracking-widest text-[#e1b77c]">{foto.ano} • material do acervo</span><h2 className="font-display text-3xl mt-3">{foto.titulo}</h2><img src={foto.imagem} className="max-w-full max-h-[70vh] object-contain mx-auto mt-6" alt={foto.titulo}/><p className="text-xs text-[#baa386] mt-5">{foto.ano.startsWith('2004') ? 'Fotografia original de apresentação fornecida ao acervo. A data de 2004 provém de metadados da câmera, não de um anúncio ou jornal; local a confirmar.' : 'Imagem da capa original da discografia; não se trata de fotografia datada de uma apresentação.'}</p></div>}
-          {estacao && <div className="p-6 md:p-9">
-            <span className="text-xs uppercase tracking-widest text-[#d9ab73]">Registro de rádio • consulta 12/11/2026</span>
-            <h2 className="font-display text-3xl md:text-5xl mt-3">{estacao.nome}</h2>
-            <p className="text-[#bca68a] mt-2">{estacao.local}</p>
-            <div className="mt-6 p-5 bg-[#362819] border border-[#aa834f]/40">
-              <div className="text-[#e4be86] font-display text-2xl">{estacao.faixa}</div>
-              <div className="text-[#bd9e75] text-sm mt-2">{estacao.horario}</div>
-              <p className="text-[#d5bf9e] text-sm leading-6 mt-4">{estacao.sequencia}</p>
-            </div>
-            <h3 className="text-xl font-display mt-8">Ouvir a gravação da dupla</h3>
-            <p className="text-[#ad987d] text-xs mt-2 mb-3">Áudio do álbum hospedado no próprio site. Não é uma gravação da transmissão da rádio.</p>
-            <audio ref={audioRef} controls preload="none" className="w-full" src={import.meta.env.BASE_URL + encodeURI(estacao.audio)}/>
-            <h3 className="text-xl font-display mt-8 mb-2">Tentar ouvir a rádio ao vivo</h3>
-            <p className="text-xs text-[#ae987c] mb-3">O quadro abaixo carrega a página da emissora. A reprodução depende de ela permitir incorporação; não é garantia de que Charles & Pierre estejam tocando neste instante.</p>
-            <div className="h-80 bg-[#ebebe7]"><iframe title={'Rádio ao vivo '+estacao.nome} src={estacao.radio} className="w-full h-full" loading="lazy" /></div>
-            <p className="text-xs text-[#c4ac88] mt-4 break-all">Fonte da programação: {estacao.playlist}</p>
-            <a href={estacao.playlist} target="_blank" rel="noopener noreferrer" className="text-xs underline text-[#e7b978] inline-block mt-2">Consultar playlist original (opcional) ↗</a>
-          </div>}
+
         </div>
       </div>}
     </div>
