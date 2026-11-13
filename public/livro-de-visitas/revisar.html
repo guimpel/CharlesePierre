@@ -1,6 +1,6 @@
 <!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="referrer" content="no-referrer"><meta name="robots" content="noindex,nofollow,noarchive"><title>Revisar memória — Charles & Pierre</title><style>
 :root{color-scheme:dark}*{box-sizing:border-box}body{background:#000;color:#f6f1e7;font:16px/1.65 Montserrat,Arial,sans-serif;margin:0}header{height:75px;border-bottom:1px solid #37302a;display:flex;align-items:center;justify-content:space-between;padding:0 max(20px,calc((100vw - 950px)/2))}header a{color:#efc13c;text-decoration:none;font-size:13px}main{max-width:850px;margin:45px auto 100px;padding:0 20px}h1{font-size:clamp(28px,4vw,42px);line-height:1.2}h2{font-size:22px}small,em{color:#a59d8a}.accent{color:#f4c025;text-transform:uppercase;font-size:12px;letter-spacing:2px;font-weight:700}.card{border:1px solid #4e4226;background:#0d0c0a;padding:24px;margin:25px 0}.row{padding:15px 0;border-bottom:1px solid #2c2823}.value{white-space:pre-wrap;overflow-wrap:anywhere}.buttons{display:flex;gap:12px;flex-wrap:wrap;margin:30px 0}button{padding:14px 22px;border:1px solid #7a6e58;background:#15120c;color:#fff;font-weight:700;cursor:pointer;border-radius:4px}button.approve{background:#f4c025;color:#000;border-color:#f4c025}button.delete{border-color:#914747;color:#f6b2b2}button:disabled{opacity:.4;cursor:default}.error{color:#efa59d}.ok{color:#b6e6a7}.attachment{display:block;margin:10px 0;color:#edc94e}img{max-height:360px;max-width:100%;object-fit:contain}.hide{display:none}</style></head><body><header><span>CHARLES & PIERRE</span><a href="/">VOLTAR AO SITE</a></header><main><span class="accent">Acesso privado de revisão</span><h1>Revisar lembrança</h1><p>Leia o relato e confira os materiais antes de autorizar a publicação. Este endereço é exclusivo de quem recebeu o link por e-mail.</p><div id="status" aria-live="polite">Carregando registro…</div><article id="record" class="card hide"></article><div id="actions" class="buttons hide"><button class="approve" data-op="aprovar">APROVAR</button><button data-op="rejeitar">REJEITAR</button><button class="delete" data-op="excluir">EXCLUIR</button></div><p id="result" role="status"></p></main><script>
-const ENDPOINT='https://rbmacrxdasqhqtykbkvj.supabase.co/functions/v1/charles-livro';
+const ENDPOINT='https://syexhhoeynolwqdehvjv.supabase.co/functions/v1/memorias-api';
 const params=new URLSearchParams(location.search),id=params.get('id')||'',token=params.get('token')||'';
 history.replaceState(null,'',location.pathname);
 const status=document.getElementById('status'),record=document.getElementById('record'),actions=document.getElementById('actions'),result=document.getElementById('result');
@@ -9,7 +9,7 @@ function row(title,value){const el=node('div','','row');el.append(node('strong',
 async function load(){
  if(!id||!token){status.textContent='Link incompleto ou já utilizado.';status.className='error';return}
  try{
-  const r=await fetch(ENDPOINT+'?op=review&id='+encodeURIComponent(id)+'&token='+encodeURIComponent(token),{cache:'no-store',referrerPolicy:'no-referrer'});
+  const r=await fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id,token,action:'review'}),cache:'no-store',referrerPolicy:'no-referrer'});
   const d=await r.json();
   if(!r.ok)throw Error(d.error||'Não autorizado');
   const x=d.registro;
@@ -18,10 +18,7 @@ async function load(){
   row('Cidade',x.cidade||'Não informada');
   row('Depoimento',x.depoimento);
   if(x.email)row('E-mail para contato (PRIVADO)',x.email);
-  row('Discos selecionados e memórias',x.discos);
-  row('Lembranças e experiências',x.experiencias);
-  row('Músicas',x.musicas);
-  row('Refrão',x.refrao);
+  if(x.detalhes && Object.keys(x.detalhes).length)row('Lembranças, discos, músicas e refrões',x.detalhes);
   for(const f of x.arquivos||[]){
     const a=node('a','Ver anexo: '+f.name,'attachment');
     a.href=f.url;a.target='_blank';a.rel='noreferrer noopener';a.referrerPolicy='no-referrer';
