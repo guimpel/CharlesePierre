@@ -107,8 +107,8 @@ const LivroDeVisitas = () => {
           <div className="w-full overflow-hidden bg-black" aria-label="Formulário para registrar sua lembrança">
             {/*
               O Tally usa um iframe de outro domínio: o site não pode ajustar a
-              apresentação da logomarca dentro dele. A margem negativa remove
-              apenas a faixa superior do embed, onde a logo quadrada é exibida.
+              apresentação da logomarca dentro dele. O recorte superior do embed oculta a repetição da logomarca.
+              A barra fixa mantém a marca oficial e evita logotipos duplicados.
               O cabeçalho fixo acima usa a arte oficial com proporção preservada.
             */}
             <iframe
@@ -117,7 +117,7 @@ const LivroDeVisitas = () => {
               loading="eager"
               allow="clipboard-write"
               className="block w-full bg-black"
-              style={{ border: 0, minHeight: 'calc(100dvh + 135px)', marginTop: '-116px' }}
+              style={{ border: 0, minHeight: 'calc(100dvh + 189px)', marginTop: '-170px' }}
             />
           </div>
         ) : (
