@@ -16,6 +16,7 @@ type Documento = {
   pagina?: number;
   observacao?: string;
   origem?: string;
+  recorte?: string;
 };
 type Marco = {
   id: string;
@@ -69,7 +70,10 @@ const marcos: Marco[] = [
     descricao: 'A dupla registra seu trabalho pela Brasil Rural, catálogo 74.005.',
     detalhe: 'O Instituto Memória Musical Brasileira cataloga o LP de Charles e Pierre em 1990, pela Brasil Rural. No repertório estão Me Dê Um Sinal, Garota Especial, Abelha Malvada e Coração Indefeso. A imagem apresentada é a capa do disco, não uma fotografia de show atribuída a 1990.',
     imagem: capa1, legenda: 'Capa do LP • Brasil Rural 74.005',
-    documentos: [{nome:'IMMuB — ficha do LP de 1990',endereco:'https://immub.org/album/charles-e-pierre',tipo:'acervo'}]
+    documentos: [
+      {nome:'IMMuB — ficha do LP de 1990',endereco:'https://immub.org/album/charles-e-pierre',tipo:'acervo'},
+      {nome:'Cravo Albin — Zezé Di Camargo cita a dupla (1990)',endereco:import.meta.env.BASE_URL+'historia/documentos/cravo_albin_zeze_camargo_1990.pdf',tipo:'pdf',origem:'https://dicionariompb.com.br/artista/zeze-di-camargo/',recorte:import.meta.env.BASE_URL+'historia/documentos/cravo_albin_zeze_camargo_1990_recorte.webp'}
+    ]
   },
   {
     id: 'made', ano: '1991–92', tipo: 'disco', titulo: 'Made in Sertão',
@@ -138,35 +142,28 @@ const marcos: Marco[] = [
   },
   {
     id: 'radio2026', ano: '2026', tipo: 'radio', titulo: 'As gravações continuam no rádio',
-    descricao: 'Em 2026, músicas da dupla aparecem em rádios de Minas Gerais e Santa Catarina.',
-    detalhe: 'Me Dê Um Sinal — Montes Claros 98 FM, 20h40; Eu Digo Sim, Você Diz Não — Guanaã FM, 23h22; Diferenças — 106 FM Blumenau, 02h47. São horários de execuções registradas em 2026.',
-    legenda: 'Monitoramento de playlists digitais • 2026',
-    documentos: [{nome:'Montes Claros 98 FM — playlist',endereco:'https://onlineradiobox.com/br/98montesclaros/playlist/1',tipo:'acervo'},
-      {nome:'Guanaã FM — playlist',endereco:'https://onlineradiobox.com/br/guanaa879/playlist/5',tipo:'acervo'},
-      {nome:'106 FM — playlist',endereco:'https://onlineradiobox.com/br/mix1063/playlist/5',tipo:'acervo'}]
+    descricao: 'Em 2026, músicas da dupla aparecem nas playlists da Montes Claros 98 FM e da 106 FM.',
+    detalhe: 'Em registros de 2026, a Montes Claros 98 FM incluiu Me Dê Um Sinal às 22h40, e a 106 FM de Blumenau registrou Diferenças às 02h47. Os horários pertencem aos registros localizados, não a uma programação fixa.',
+    legenda: 'Registro de playlists de rádio • 2026',
+    documentos: [
+      {nome:'Montes Claros 98 FM — execução às 22h40',endereco:import.meta.env.BASE_URL+'historia/documentos/radio_montes_claros_98_2026.pdf',tipo:'pdf',origem:'https://onlineradiobox.com/br/98montesclaros/playlist/1',recorte:import.meta.env.BASE_URL+'historia/documentos/radio_montes_claros_98_2026_recorte.webp'},
+      {nome:'106 FM Blumenau — Diferenças às 02h47',endereco:'https://onlineradiobox.com/br/mix1063/playlist/5',tipo:'acervo'}
+    ]
   }
 ];
 
 const radios: Estacao[] = [
   {
     id:'montes',nome:'Montes Claros 98 FM',local:'Montes Claros • MG',
-    faixa:'Me Dê Um Sinal',horario:'20h40',
-    programa:'Buteco 98 • 19h às 21h',
-    sequencia:'Registro em playlist de 2026',
+    faixa:'Me Dê Um Sinal',horario:'22h40',
+    sequencia:'Playlist consultada em novembro de 2026',
     playlist:'https://onlineradiobox.com/br/98montesclaros/playlist/1',
     radio:'https://montesclaros.com/aovivo/stream98.asp'
   },
   {
-    id:'guanaa',nome:'Guanaã FM 87,9',local:'Guanhães • MG',
-    faixa:'Eu Digo Sim, Você Diz Não',horario:'23h22',
-    sequencia:'Registro em playlist de 2026',
-    playlist:'https://onlineradiobox.com/br/guanaa879/playlist/5',
-    radio:'https://onlineradiobox.com/br/guanaa879/'
-  },
-  {
     id:'106',nome:'106 FM',local:'Blumenau • SC',
     faixa:'Diferenças',horario:'02h47',
-    sequencia:'Registro em playlist de 2026',
+    sequencia:'Playlist consultada em novembro de 2026',
     playlist:'https://onlineradiobox.com/br/mix1063/playlist/5',
     radio:'https://tudoradio.com/player/radio/1029-106-fm'
   },
@@ -342,7 +339,7 @@ const Historia = () => {
           <span className="text-[#d3a773] uppercase tracking-[.24em] text-xs">Rádios • 2026</span>
           <h2 className="font-display text-4xl md:text-6xl mt-3">CHARLES & PIERRE NO RÁDIO</h2>
           <p className="max-w-3xl text-[#c0ae95] mt-5">Ouça as emissoras que registraram músicas da dupla em 2026.</p>
-          <div className="grid lg:grid-cols-3 gap-5 mt-10">
+          <div className="grid md:grid-cols-2 gap-5 mt-10">
             {radios.map((r,i)=>(
               <article key={r.id} className={'cp-card border p-6 md:p-7 ' + (i===0?'bg-[#2e2518] border-[#c8a36d]':'bg-[#1c1713] border-[#80613b]/40')}>
                 <div className="flex items-center justify-between"><Radio className="text-[#ddb67c]" size={28}/><span className="uppercase text-[10px] tracking-widest text-[#e7c28b]">2026</span></div>
@@ -355,10 +352,13 @@ const Historia = () => {
                   className="mt-7 inline-flex items-center justify-center w-full gap-2 py-3 bg-[#c69e66] hover:bg-[#e0b77e] text-[#20140b] text-xs font-semibold uppercase tracking-widest">
                   <Headphones size={18}/> Ouvir rádio ao vivo <ArrowRight size={16}/>
                 </a>
-                <a href={r.playlist} target="_blank" rel="noopener noreferrer"
+                <button type="button" onClick={() => {
+                    abrirMarco(marcos.find(m => m.id === 'radio2026')!);
+                    setDocAtual(i);
+                  }}
                   className="inline-block mt-4 text-xs text-[#bda789] hover:text-white underline underline-offset-4">
-                  Registro da música na playlist
-                </a>
+                  Ver registro da execução
+                </button>
               </article>
             ))}
           </div>
@@ -386,6 +386,7 @@ const Historia = () => {
               <h3 className="text-[#dfb579] font-display text-2xl mb-4">Fontes e documentos</h3>
               <div className="flex flex-wrap gap-2 mb-5">{aberto.documentos.map((d,i)=><button key={i} onClick={()=>setDocAtual(i)} className={'border text-xs p-3 ' + (i===docAtual?'text-[#17120d] bg-[#cba46f] border-[#cba46f]':'text-[#c9b59c] border-[#765d42]')}>{d.nome}</button>)}</div>
               {doc && <>
+                {doc.recorte && <img src={doc.recorte} alt={'Trecho original — '+doc.nome} loading="lazy" className="block w-full max-h-80 object-contain bg-[#efede8] mb-5"/>}
                 {previewDocumento && <div className="aspect-[3/4] sm:aspect-[4/3] bg-[#e9e7e0]"><iframe title={doc.nome} loading="lazy" className="w-full h-full" src={previewDocumento}/></div>}
                 {youtube && <div className="aspect-video bg-black"><iframe title="Vídeo histórico" className="w-full h-full" src={youtube} allow="autoplay; encrypted-media; picture-in-picture" allowFullScreen/></div>}
 
