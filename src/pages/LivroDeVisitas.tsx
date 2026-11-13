@@ -156,14 +156,26 @@ const LivroDeVisitas = () => {
             </p>
             <div className="mt-10 border border-white/15 bg-black p-5 md:p-9">
               {formularioAtivo ? (
-                <iframe
-                  title="Assinar o Livro de Visitas de Charles & Pierre"
-                  data-tally-src={'https://tally.so/embed/' + config.formId + '?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1'}
-                  loading="lazy"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  className="w-full bg-white"
-                  style={{ border: 0, minHeight: 800 }}
-                />
+                <div className="mx-auto max-w-2xl text-center py-10 md:py-16">
+                  <BookOpen size={34} className="mx-auto text-accent mb-6" strokeWidth={1.4} aria-hidden="true" />
+                  <p className="font-display text-3xl md:text-4xl tracking-wider">SUA HISTÓRIA FAZ PARTE DA NOSSA</p>
+                  <p className="text-white/60 mt-5 mb-9 max-w-lg mx-auto leading-7 text-sm">
+                    Compartilhe como conheceu Charles & Pierre, sua melhor lembrança e,
+                    se desejar, uma fotografia ou gravação.
+                  </p>
+                  <button
+                    type="button"
+                    data-tally-open={config.formId ?? undefined}
+                    data-tally-layout="modal"
+                    data-tally-width="650"
+                    data-tally-hide-title="1"
+                    data-tally-overlay="1"
+                    className="inline-flex items-center justify-center gap-3 px-7 py-4 bg-accent hover:brightness-110 text-black text-xs font-semibold uppercase tracking-widest transition-colors"
+                  >
+                    Escrever minha lembrança <ChevronRight size={18} aria-hidden="true" />
+                  </button>
+                  <p className="mt-6 text-xs text-white/40">Envio privado. Publicação somente após aprovação.</p>
+                </div>
               ) : (
                 <div className="text-center py-12">
                   <BookOpen size={30} className="mx-auto mb-5 text-accent" strokeWidth={1.5} />
