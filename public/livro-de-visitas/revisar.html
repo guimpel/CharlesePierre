@@ -33,7 +33,7 @@ async function load(){
 }
 for(const b of actions.querySelectorAll('button'))b.addEventListener('click',async()=>{
  const op=b.dataset.op;
- if(!confirm(op==='aprovar'?'Publicar este depoimento no mural público?':op==='excluir'?'Excluir definitivamente este depoimento e os anexos?':'Rejeitar este depoimento, sem publicar?'))return;
+ if(op==='excluir'&&!confirm('Excluir definitivamente este depoimento e os anexos?'))return;
  for(const btn of actions.querySelectorAll('button'))btn.disabled=true;
  try{
   const r=await fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id,token,action:op}),referrerPolicy:'no-referrer'});
