@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, MapPin } from 'lucide-react';
+import logo from '@/assets/logo-oficial.png';
 
 type Config = { formId: string | null; submissoesAbertas: boolean };
 type Anexo = { titulo: string; tipo: 'foto' | 'audio' | 'pdf'; caminho: string };
@@ -85,22 +86,40 @@ const LivroDeVisitas = () => {
 
   return (
     <div className="min-h-screen bg-black text-white font-body">
-      <div className="bg-black border-b border-white/10 px-4 md:px-8 py-3">
-        <Link to="/" className="inline-flex items-center gap-2 text-white/70 hover:text-white text-xs tracking-widest uppercase">
-          <ArrowLeft size={15} /> Voltar ao site
-        </Link>
-      </div>
+      <header className="fixed top-0 left-0 right-0 z-50 h-20 bg-black/95 border-b border-white/10 backdrop-blur-sm">
+        <nav className="container mx-auto h-full px-5 md:px-10 flex items-center justify-between gap-5">
+          <Link to="/" aria-label="Charles & Pierre — voltar ao site" className="shrink-0 inline-flex items-center">
+            <img
+              src={logo}
+              alt="Charles & Pierre"
+              className="h-12 md:h-14 w-auto max-w-[165px] object-contain"
+              loading="eager"
+            />
+          </Link>
+          <Link to="/" className="inline-flex items-center gap-2 text-white/65 hover:text-white text-[11px] md:text-xs tracking-widest uppercase transition-colors">
+            <ArrowLeft size={15} /> Voltar ao site
+          </Link>
+        </nav>
+      </header>
 
-      <main>
+      <main className="pt-20">
         {formularioAtivo ? (
-          <iframe
-            title="Charles & Pierre — Livro de Visitas"
-            data-tally-src={'https://tally.so/embed/' + config.formId + '?alignLeft=0&hideTitle=0&transparentBackground=1&dynamicHeight=1'}
-            loading="eager"
-            allow="clipboard-write"
-            className="block w-full bg-black"
-            style={{ border: 0, minHeight: '100dvh' }}
-          />
+          <div className="w-full overflow-hidden bg-black" aria-label="Formulário para registrar sua lembrança">
+            {/*
+              O Tally usa um iframe de outro domínio: o site não pode ajustar a
+              apresentação da logomarca dentro dele. A margem negativa remove
+              apenas a faixa superior do embed, onde a logo quadrada é exibida.
+              O cabeçalho fixo acima usa a arte oficial com proporção preservada.
+            */}
+            <iframe
+              title="Charles & Pierre — Livro de Visitas"
+              data-tally-src={'https://tally.so/embed/' + config.formId + '?alignLeft=0&hideTitle=0&transparentBackground=1&dynamicHeight=1'}
+              loading="eager"
+              allow="clipboard-write"
+              className="block w-full bg-black"
+              style={{ border: 0, minHeight: 'calc(100dvh + 135px)', marginTop: '-116px' }}
+            />
+          </div>
         ) : (
           <div className="min-h-[80vh] flex items-center justify-center px-6 text-center">
             <div>
