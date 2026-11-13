@@ -61,6 +61,24 @@ const LivroDeVisitas = () => {
   }, [selecionado]);
 
   const formularioAtivo = config.submissoesAbertas && !!config.formId;
+
+  useEffect(() => {
+    if (!formularioAtivo) return;
+    // Script oficial Tally: redimensiona o formulário conforme seu conteúdo.
+    const win = window as Window & { Tally?: { loadEmbeds: () => void } };
+    const load = () => win.Tally?.loadEmbeds();
+    if (win.Tally) { load(); return; }
+    const selector = 'script[src="https://tally.so/widgets/embed.js"]';
+    let script = document.querySelector<HTMLScriptElement>(selector);
+    if (script) { script.addEventListener('load', load, { once: true }); return () => script?.removeEventListener('load', load); }
+    script = document.createElement('script');
+    script.src = 'https://tally.so/widgets/embed.js';
+    script.async = true;
+    script.onload = load;
+    document.body.appendChild(script);
+    return () => { if (script) script.onload = null; };
+  }, [formularioAtivo]);
+
   return (
     <div className="min-h-screen bg-background text-foreground font-body">
       <header className="border-b border-white/10 bg-black">
@@ -140,9 +158,11 @@ const LivroDeVisitas = () => {
               {formularioAtivo ? (
                 <iframe
                   title="Assinar o Livro de Visitas de Charles & Pierre"
-                  src={'https://tally.so/embed/' + config.formId + '?alignLeft=1&hideTitle=1&transparentBackground=1'}
-                  loading="lazy" referrerPolicy="strict-origin-when-cross-origin"
-                  className="w-full min-h-[780px] bg-white rounded-none" style={{border:0}}
+                  data-tally-src={'https://tally.so/embed/' + config.formId + '?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1'}
+                  loading="lazy"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  className="w-full bg-white"
+                  style={{ border: 0, minHeight: 800 }}
                 />
               ) : (
                 <div className="text-center py-12">
