@@ -3,6 +3,7 @@ import Hero from '@/components/Hero';
 import Plataformas from '@/components/Plataformas';
 import Agenda from '@/components/Agenda';
 import Sobre from '@/components/Sobre';
+import ConviteLivroVisitas from '@/components/ConviteLivroVisitas';
 import Discografia from '@/components/Discografia';
 import Videos from '@/components/Videos';
 import Contato from '@/components/Contato';
@@ -15,6 +16,7 @@ const Index = () => {
       <Plataformas />
       <Agenda />
       <Sobre />
+      <ConviteLivroVisitas />
       <Discografia />
       <Videos />
       <Contato />
