@@ -19,7 +19,7 @@ type Documento = {
 type Marco = {
   id: string;
   ano: string;
-  tipo: 'disco' | 'documento' | 'internet' | 'radio';
+  tipo: 'disco' | 'documento' | 'foto' | 'internet' | 'radio';
   titulo: string;
   descricao: string;
   detalhe: string;
@@ -46,6 +46,20 @@ const capas = [
   {ano: '1995–1996', titulo: 'São Teus Olhos', imagem: capa4},
   {ano: '1997', titulo: 'Só Uma Vez', imagem: capa5},
   {ano: '2000', titulo: 'Charles & Pierre • Vol. 6', imagem: capa6},
+];
+
+const fotosShow = [
+  {ano:'2004 • EXIF',titulo:'Apresentação — palco e músicos • foto 01',imagem:import.meta.env.BASE_URL+'historia/fotos/img_9545.webp',origem:'IMG_9545.JPG'},
+  {ano:'2004 • EXIF',titulo:'Apresentação — palco e violão • foto 02',imagem:import.meta.env.BASE_URL+'historia/fotos/img_9547.webp',origem:'IMG_9547.JPG'},
+  {ano:'2004 • EXIF',titulo:'Apresentação — músicos em palco • foto 03',imagem:import.meta.env.BASE_URL+'historia/fotos/img_9558.webp',origem:'IMG_9558.JPG'},
+  {ano:'2004 • EXIF',titulo:'Bastidores da apresentação • foto 04',imagem:import.meta.env.BASE_URL+'historia/fotos/img_9566.webp',origem:'IMG_9566.JPG'},
+  {ano:'2004 • EXIF',titulo:'Convidados e músicos • foto 05',imagem:import.meta.env.BASE_URL+'historia/fotos/img_9577.webp',origem:'IMG_9577.JPG'},
+  {ano:'2004 • EXIF',titulo:'Convidados e músicos • foto 06',imagem:import.meta.env.BASE_URL+'historia/fotos/img_9581.webp',origem:'IMG_9581.JPG'},
+  {ano:'2004 • EXIF',titulo:'Registro de bastidores • foto 07',imagem:import.meta.env.BASE_URL+'historia/fotos/img_9794.webp',origem:'IMG_9794.JPG'},
+  {ano:'2004 • EXIF',titulo:'Registro de bastidores • foto 08',imagem:import.meta.env.BASE_URL+'historia/fotos/img_9795.webp',origem:'IMG_9795.JPG'},
+  {ano:'2004 • EXIF',titulo:'Público e apresentação • foto 09',imagem:import.meta.env.BASE_URL+'historia/fotos/img_9817.webp',origem:'IMG_9817.JPG'},
+  {ano:'2004 • EXIF',titulo:'Música ao vivo • foto 10',imagem:import.meta.env.BASE_URL+'historia/fotos/img_9843.webp',origem:'IMG_9843.JPG'},
+  {ano:'2004 • EXIF',titulo:'Palco e plateia • foto 11',imagem:import.meta.env.BASE_URL+'historia/fotos/img_9845.webp',origem:'IMG_9845.JPG'},
 ];
 
 const marcos: Marco[] = [
@@ -105,6 +119,14 @@ const marcos: Marco[] = [
     documentos: [{nome:'Pra Sempre Sertanejo — ficha do volume 6',endereco:'https://www.prasempresertanejo.com.br/2025/08/charles-e-pierre-2000.html',tipo:'acervo'}]
   },
   {
+    id: 'show2004', ano: '2004', tipo: 'foto', titulo: 'Fotografias de uma apresentação',
+    descricao: 'Onze fotografias preservam uma apresentação registrada na câmera em setembro de 2004.',
+    detalhe: 'Os onze JPG originais foram fornecidos pela dupla. Os metadados EXIF da câmera Canon EOS 10D registram captura em 29 e 30 de setembro de 2004. Isso é um indicativo histórico relevante, mas o relógio da câmera, o local e a identificação dos participantes ainda precisam ser confrontados com outras fontes. As imagens não foram reconstruídas; apenas redimensionadas para WebP na publicação, com os originais mantidos em separado.',
+    imagem: import.meta.env.BASE_URL+'historia/fotos/img_9817.webp',
+    legenda: 'Fotografia da apresentação • data conforme EXIF da câmera',
+    documentos: [{nome:'Fotografia original do acervo — IMG_9817.JPG',endereco:import.meta.env.BASE_URL+'historia/fotos/img_9817.webp',tipo:'acervo'}]
+  },
+  {
     id: 'youtube', ano: '2011', tipo: 'internet', titulo: 'O repertório aparece na internet',
     descricao: 'Uma publicação de Me Dê Um Sinal no YouTube preserva imagens anteriores da dupla.',
     detalhe: 'A referência de 2011 corresponde ao registro de publicação digital do vídeo. Não indica a data em que a fotografia foi tirada, nem permite datar uma apresentação. A reprodução abre dentro desta página.',
@@ -154,12 +176,13 @@ const marca = {
   disco: {icone:Disc3,texto:'Disco'},
   documento: {icone:FileText,texto:'Documento de época'},
   internet: {icone:Play,texto:'Registro digital'},
-  radio: {icone:Radio,texto:'Rádio'}
+  radio: {icone:Radio,texto:'Rádio'},
+  foto: {icone:Images,texto:'Fotografia de acervo'}
 };
 
 const Historia = () => {
   const [aba, setAba] = useState<'tempo' | 'fotos' | 'radios'>('tempo');
-  const [filtro, setFiltro] = useState<'todos' | 'disco' | 'documento' | 'internet' | 'radio'>('todos');
+  const [filtro, setFiltro] = useState<'todos' | 'disco' | 'documento' | 'foto' | 'internet' | 'radio'>('todos');
   const [aberto, setAberto] = useState<Marco | null>(null);
   const [foto, setFoto] = useState<(typeof capas)[number] | null>(null);
   const [estacao, setEstacao] = useState<Estacao | null>(null);
@@ -256,7 +279,7 @@ const Historia = () => {
             <p className="max-w-md text-[#ae9b85] text-sm leading-7">Clique em qualquer marco para ler a história, conferir a fonte e visualizar o documento sem abandonar esta página.</p>
           </div>
           <div className="flex flex-wrap gap-2 mb-14">
-            {([['todos','Todos'],['disco','Discos'],['documento','Jornais'],['internet','Internet'],['radio','Rádios']] as const).map(([v,t])=><button key={v} onClick={()=>setFiltro(v)} className={'px-4 py-2 text-xs uppercase tracking-widest border '+(filtro===v?'bg-[#c69e66] text-[#21160a] border-[#c69e66]':'text-[#bdad96] border-[#6f5333] hover:text-white')}>{t}</button>)}
+            {([['todos','Todos'],['disco','Discos'],['documento','Jornais'],['foto','Fotos'],['internet','Internet'],['radio','Rádios']] as const).map(([v,t])=><button key={v} onClick={()=>setFiltro(v)} className={'px-4 py-2 text-xs uppercase tracking-widest border '+(filtro===v?'bg-[#c69e66] text-[#21160a] border-[#c69e66]':'text-[#bdad96] border-[#6f5333] hover:text-white')}>{t}</button>)}
           </div>
           <div className="cp-timeline space-y-9">
             {itens.map((m,i)=>{
@@ -289,7 +312,7 @@ const Historia = () => {
         {aba==='fotos' && <section className="max-w-7xl mx-auto px-5 md:px-8 py-16 md:py-24">
           <span className="text-[#d3a773] uppercase tracking-[.24em] text-xs">Memória visual</span>
           <h2 className="font-display text-4xl md:text-6xl mt-3">FOTOGRAFIAS E CAPAS</h2>
-          <p className="max-w-3xl text-[#c0ae95] mt-5 leading-8">As capas históricas abaixo pertencem aos seis volumes da discografia. As fotografias de palco recebidas estão sendo identificadas separadamente para não atribuir datas ou locais que ainda não foram confirmados.</p>
+          <p className="max-w-3xl text-[#c0ae95] mt-5 leading-8">As capas abaixo pertencem aos seis volumes da discografia. O segundo conjunto reúne onze fotografias de apresentação: a data indicada é a registrada no EXIF da câmera, ainda pendente de validação externa.</p>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-7 mt-10">
             {capas.map(c=><button key={c.titulo} onClick={()=>setFoto(c)} className="cp-card group text-left border border-[#735435]/35 p-3 bg-[#201913]">
               <img src={c.imagem} alt={c.titulo} className="w-full aspect-square object-contain bg-black/30" loading="lazy" />
@@ -297,9 +320,21 @@ const Historia = () => {
               <div className="px-2 pb-2 text-[#d4c5b1] text-sm">{c.titulo}</div>
             </button>)}
           </div>
-          <div className="mt-12 border border-[#8a6840]/40 bg-[#241c16] p-6 md:p-8">
-            <h3 className="font-display text-2xl text-[#e8c18b]">Registros de apresentações</h3>
-            <p className="text-[#c7b9a5] mt-3 leading-7">As fotografias de palco já recebidas não trazem data ou local confirmados. Por isso não aparecem como fotos de 1990, 1994 ou 2000. Serão acrescentadas à galeria de shows com a proveniência correta, sem alterações artificiais de rosto ou de cenário.</p>
+          <div id="fotos-2004" className="mt-12 border border-[#8a6840]/40 bg-[#241c16] p-6 md:p-8">
+            <span className="text-xs uppercase tracking-[.24em] text-[#c5a16d]">Arquivo fotográfico • 2004 segundo EXIF</span>
+            <h3 className="font-display text-3xl text-[#e8c18b] mt-3">Registros de apresentações</h3>
+            <p className="text-[#c7b9a5] mt-3 leading-7">São onze fotografias de palco, público e bastidores. O EXIF dos arquivos registra 29 e 30 de setembro de 2004; local, nomes de convidados e precisão do relógio ainda estão em apuração. Clique em qualquer fotografia para ampliar dentro do site.</p>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-5 mt-7">
+              {fotosShow.map(f=>(
+                <button key={f.origem} onClick={()=>setFoto(f)} className="group cp-card border border-[#a28155]/25 bg-[#100d0b] overflow-hidden text-left">
+                  <img src={f.imagem} alt={f.titulo} className="w-full aspect-[3/2] object-cover" loading="lazy" />
+                  <div className="p-3">
+                    <p className="text-[#f0d4aa] font-display text-base">{f.titulo}</p>
+                    <p className="text-[11px] mt-2 text-[#a58c70]">{f.origem} • EXIF 2004</p>
+                  </div>
+                </button>
+              ))}
+            </div>
           </div>
           <div className="mt-10 border border-[#8a6840]/40 p-6 md:p-8 flex flex-col md:flex-row items-center gap-6">
             <img src="https://i.ytimg.com/vi/aYFsB4KTZg8/hqdefault.jpg" alt="Miniatura de Me Dê Um Sinal" className="w-full md:w-64 aspect-video object-cover" />
@@ -355,7 +390,7 @@ const Historia = () => {
               </>}
             </div>
           </>}
-          {foto && <div className="p-6 md:p-9"><span className="text-xs uppercase tracking-widest text-[#e1b77c]">{foto.ano} • material do acervo</span><h2 className="font-display text-3xl mt-3">{foto.titulo}</h2><img src={foto.imagem} className="max-w-full max-h-[70vh] object-contain mx-auto mt-6" alt={foto.titulo}/><p className="text-xs text-[#baa386] mt-5">Imagem da capa original da discografia; não se trata de fotografia datada de uma apresentação.</p></div>}
+          {foto && <div className="p-6 md:p-9"><span className="text-xs uppercase tracking-widest text-[#e1b77c]">{foto.ano} • material do acervo</span><h2 className="font-display text-3xl mt-3">{foto.titulo}</h2><img src={foto.imagem} className="max-w-full max-h-[70vh] object-contain mx-auto mt-6" alt={foto.titulo}/><p className="text-xs text-[#baa386] mt-5">{foto.ano.startsWith('2004') ? 'Fotografia original de apresentação fornecida ao acervo. A data de 2004 provém de metadados da câmera, não de um anúncio ou jornal; local a confirmar.' : 'Imagem da capa original da discografia; não se trata de fotografia datada de uma apresentação.'}</p></div>}
           {estacao && <div className="p-6 md:p-9">
             <span className="text-xs uppercase tracking-widest text-[#d9ab73]">Registro de rádio • consulta 12/11/2026</span>
             <h2 className="font-display text-3xl md:text-5xl mt-3">{estacao.nome}</h2>
