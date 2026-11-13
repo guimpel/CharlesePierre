@@ -1,0 +1,772 @@
+{
+  "version": 3,
+  "formularioTally": "VpQxJg",
+  "origem": "Discografia do site",
+  "albums": [
+    {
+      "volume": 1,
+      "ano": "1990",
+      "titulo": "Brasil Rural",
+      "capa": "/capas/vol-01.jpg",
+      "musicas": [
+        {
+          "numero": 1,
+          "titulo": "Me Dê Um Sinal"
+        },
+        {
+          "numero": 2,
+          "titulo": "O Inferno É Aqui Mesmo"
+        },
+        {
+          "numero": 3,
+          "titulo": "Garota Especial"
+        },
+        {
+          "numero": 4,
+          "titulo": "Férias no Amor"
+        },
+        {
+          "numero": 5,
+          "titulo": "Não Faça Assim Comigo"
+        },
+        {
+          "numero": 6,
+          "titulo": "Abelha Malvada"
+        },
+        {
+          "numero": 7,
+          "titulo": "Menina Paixão"
+        },
+        {
+          "numero": 8,
+          "titulo": "Vale Postal"
+        },
+        {
+          "numero": 9,
+          "titulo": "Sofrimento"
+        },
+        {
+          "numero": 10,
+          "titulo": "Coração Indefeso"
+        }
+      ]
+    },
+    {
+      "volume": 2,
+      "ano": "1992",
+      "titulo": "Made In Sertão",
+      "capa": "/capas/vol-02.jpg",
+      "musicas": [
+        {
+          "numero": 1,
+          "titulo": "Cama Gostosa"
+        },
+        {
+          "numero": 2,
+          "titulo": "É Só Me Chamar Que Eu Vou"
+        },
+        {
+          "numero": 3,
+          "titulo": "A Cola na Coxa Dela"
+        },
+        {
+          "numero": 4,
+          "titulo": "Que Gostoso"
+        },
+        {
+          "numero": 5,
+          "titulo": "Cama Gostosa — Karaokê"
+        },
+        {
+          "numero": 6,
+          "titulo": "Dia Sim, Dia Sim"
+        },
+        {
+          "numero": 7,
+          "titulo": "Sala de Aula"
+        },
+        {
+          "numero": 8,
+          "titulo": "Homenagem à Aparecida"
+        },
+        {
+          "numero": 9,
+          "titulo": "Quando"
+        },
+        {
+          "numero": 10,
+          "titulo": "Dia Sim, Dia Sim — Karaokê"
+        }
+      ]
+    },
+    {
+      "volume": 3,
+      "ano": "1994",
+      "titulo": "Por Te Amar Demais",
+      "capa": "/capas/vol-03.jpg",
+      "musicas": [
+        {
+          "numero": 1,
+          "titulo": "Por Te Amar Demais"
+        },
+        {
+          "numero": 2,
+          "titulo": "Você Foi Bobo Demais, Coração"
+        },
+        {
+          "numero": 3,
+          "titulo": "Volta Pra Mim"
+        },
+        {
+          "numero": 4,
+          "titulo": "Um Coração Não É Brinquedo"
+        },
+        {
+          "numero": 5,
+          "titulo": "Estou Feliz"
+        },
+        {
+          "numero": 6,
+          "titulo": "Amor Livre"
+        },
+        {
+          "numero": 7,
+          "titulo": "Eu Digo Sim, Você Diz Não"
+        },
+        {
+          "numero": 8,
+          "titulo": "Namorada"
+        },
+        {
+          "numero": 9,
+          "titulo": "Diferenças"
+        },
+        {
+          "numero": 10,
+          "titulo": "Amor Livre — Karaokê"
+        }
+      ]
+    },
+    {
+      "volume": 4,
+      "ano": "1995",
+      "titulo": "São Teus Olhos",
+      "capa": "/capas/vol-04.jpg",
+      "musicas": [
+        {
+          "numero": 1,
+          "titulo": "São Teus Olhos"
+        },
+        {
+          "numero": 2,
+          "titulo": "Não Deixei de Te Amar"
+        },
+        {
+          "numero": 3,
+          "titulo": "Anjo da Noite"
+        },
+        {
+          "numero": 4,
+          "titulo": "Era Tudo Mentira"
+        },
+        {
+          "numero": 5,
+          "titulo": "Eu Digo Não"
+        },
+        {
+          "numero": 6,
+          "titulo": "Só Por Amor"
+        },
+        {
+          "numero": 7,
+          "titulo": "Papel de Bobo"
+        },
+        {
+          "numero": 8,
+          "titulo": "Sempre na Estrada"
+        },
+        {
+          "numero": 9,
+          "titulo": "Quem É Você?"
+        },
+        {
+          "numero": 10,
+          "titulo": "Noite Colorida"
+        },
+        {
+          "numero": 11,
+          "titulo": "Volta Pra Mim"
+        },
+        {
+          "numero": 12,
+          "titulo": "Por Te Amar Demais"
+        }
+      ]
+    },
+    {
+      "volume": 5,
+      "ano": "1997",
+      "titulo": "Só Uma Vez",
+      "capa": "/capas/vol-05.jpg",
+      "musicas": [
+        {
+          "numero": 1,
+          "titulo": "Só Uma Vez"
+        },
+        {
+          "numero": 2,
+          "titulo": "Eu Quero Fazer Amor"
+        },
+        {
+          "numero": 3,
+          "titulo": "Diga Pra Mim"
+        },
+        {
+          "numero": 4,
+          "titulo": "Não Peça Bis"
+        },
+        {
+          "numero": 5,
+          "titulo": "Quando Ela Passa Por Mim"
+        },
+        {
+          "numero": 6,
+          "titulo": "Riozinho"
+        },
+        {
+          "numero": 7,
+          "titulo": "Não Volta"
+        },
+        {
+          "numero": 8,
+          "titulo": "Corre-Corre"
+        },
+        {
+          "numero": 9,
+          "titulo": "Mundo de Amor"
+        },
+        {
+          "numero": 10,
+          "titulo": "Blá Blá Blá"
+        },
+        {
+          "numero": 11,
+          "titulo": "De Cidade em Cidade"
+        },
+        {
+          "numero": 12,
+          "titulo": "Meu Pensamento É Todo Você"
+        },
+        {
+          "numero": 13,
+          "titulo": "Briguenta"
+        }
+      ]
+    },
+    {
+      "volume": 6,
+      "ano": "2000",
+      "titulo": "Charles & Pierre",
+      "capa": "/capas/vol-06.jpg",
+      "musicas": [
+        {
+          "numero": 1,
+          "titulo": "Mulher Indomada"
+        },
+        {
+          "numero": 2,
+          "titulo": "Só Te Amar"
+        },
+        {
+          "numero": 3,
+          "titulo": "Minha Menina"
+        },
+        {
+          "numero": 4,
+          "titulo": "Feitiço"
+        },
+        {
+          "numero": 5,
+          "titulo": "Diga de Uma Vez por Todas"
+        },
+        {
+          "numero": 6,
+          "titulo": "Só Com Você"
+        },
+        {
+          "numero": 7,
+          "titulo": "Fica Comigo Agora"
+        },
+        {
+          "numero": 8,
+          "titulo": "Tô Pro Amor"
+        },
+        {
+          "numero": 9,
+          "titulo": "Namoro Antigo"
+        },
+        {
+          "numero": 10,
+          "titulo": "Senhora Aparecida"
+        }
+      ]
+    }
+  ],
+  "faixas": [
+    {
+      "id": "1-01",
+      "volume": 1,
+      "faixa": 1,
+      "titulo": "Me Dê Um Sinal",
+      "rotulo": "Vol. 01 — Me Dê Um Sinal"
+    },
+    {
+      "id": "1-02",
+      "volume": 1,
+      "faixa": 2,
+      "titulo": "O Inferno É Aqui Mesmo",
+      "rotulo": "Vol. 01 — O Inferno É Aqui Mesmo"
+    },
+    {
+      "id": "1-03",
+      "volume": 1,
+      "faixa": 3,
+      "titulo": "Garota Especial",
+      "rotulo": "Vol. 01 — Garota Especial"
+    },
+    {
+      "id": "1-04",
+      "volume": 1,
+      "faixa": 4,
+      "titulo": "Férias no Amor",
+      "rotulo": "Vol. 01 — Férias no Amor"
+    },
+    {
+      "id": "1-05",
+      "volume": 1,
+      "faixa": 5,
+      "titulo": "Não Faça Assim Comigo",
+      "rotulo": "Vol. 01 — Não Faça Assim Comigo"
+    },
+    {
+      "id": "1-06",
+      "volume": 1,
+      "faixa": 6,
+      "titulo": "Abelha Malvada",
+      "rotulo": "Vol. 01 — Abelha Malvada"
+    },
+    {
+      "id": "1-07",
+      "volume": 1,
+      "faixa": 7,
+      "titulo": "Menina Paixão",
+      "rotulo": "Vol. 01 — Menina Paixão"
+    },
+    {
+      "id": "1-08",
+      "volume": 1,
+      "faixa": 8,
+      "titulo": "Vale Postal",
+      "rotulo": "Vol. 01 — Vale Postal"
+    },
+    {
+      "id": "1-09",
+      "volume": 1,
+      "faixa": 9,
+      "titulo": "Sofrimento",
+      "rotulo": "Vol. 01 — Sofrimento"
+    },
+    {
+      "id": "1-10",
+      "volume": 1,
+      "faixa": 10,
+      "titulo": "Coração Indefeso",
+      "rotulo": "Vol. 01 — Coração Indefeso"
+    },
+    {
+      "id": "2-01",
+      "volume": 2,
+      "faixa": 1,
+      "titulo": "Cama Gostosa",
+      "rotulo": "Vol. 02 — Cama Gostosa"
+    },
+    {
+      "id": "2-02",
+      "volume": 2,
+      "faixa": 2,
+      "titulo": "É Só Me Chamar Que Eu Vou",
+      "rotulo": "Vol. 02 — É Só Me Chamar Que Eu Vou"
+    },
+    {
+      "id": "2-03",
+      "volume": 2,
+      "faixa": 3,
+      "titulo": "A Cola na Coxa Dela",
+      "rotulo": "Vol. 02 — A Cola na Coxa Dela"
+    },
+    {
+      "id": "2-04",
+      "volume": 2,
+      "faixa": 4,
+      "titulo": "Que Gostoso",
+      "rotulo": "Vol. 02 — Que Gostoso"
+    },
+    {
+      "id": "2-05",
+      "volume": 2,
+      "faixa": 5,
+      "titulo": "Cama Gostosa — Karaokê",
+      "rotulo": "Vol. 02 — Cama Gostosa — Karaokê"
+    },
+    {
+      "id": "2-06",
+      "volume": 2,
+      "faixa": 6,
+      "titulo": "Dia Sim, Dia Sim",
+      "rotulo": "Vol. 02 — Dia Sim, Dia Sim"
+    },
+    {
+      "id": "2-07",
+      "volume": 2,
+      "faixa": 7,
+      "titulo": "Sala de Aula",
+      "rotulo": "Vol. 02 — Sala de Aula"
+    },
+    {
+      "id": "2-08",
+      "volume": 2,
+      "faixa": 8,
+      "titulo": "Homenagem à Aparecida",
+      "rotulo": "Vol. 02 — Homenagem à Aparecida"
+    },
+    {
+      "id": "2-09",
+      "volume": 2,
+      "faixa": 9,
+      "titulo": "Quando",
+      "rotulo": "Vol. 02 — Quando"
+    },
+    {
+      "id": "2-10",
+      "volume": 2,
+      "faixa": 10,
+      "titulo": "Dia Sim, Dia Sim — Karaokê",
+      "rotulo": "Vol. 02 — Dia Sim, Dia Sim — Karaokê"
+    },
+    {
+      "id": "3-01",
+      "volume": 3,
+      "faixa": 1,
+      "titulo": "Por Te Amar Demais",
+      "rotulo": "Vol. 03 — Por Te Amar Demais"
+    },
+    {
+      "id": "3-02",
+      "volume": 3,
+      "faixa": 2,
+      "titulo": "Você Foi Bobo Demais, Coração",
+      "rotulo": "Vol. 03 — Você Foi Bobo Demais, Coração"
+    },
+    {
+      "id": "3-03",
+      "volume": 3,
+      "faixa": 3,
+      "titulo": "Volta Pra Mim",
+      "rotulo": "Vol. 03 — Volta Pra Mim"
+    },
+    {
+      "id": "3-04",
+      "volume": 3,
+      "faixa": 4,
+      "titulo": "Um Coração Não É Brinquedo",
+      "rotulo": "Vol. 03 — Um Coração Não É Brinquedo"
+    },
+    {
+      "id": "3-05",
+      "volume": 3,
+      "faixa": 5,
+      "titulo": "Estou Feliz",
+      "rotulo": "Vol. 03 — Estou Feliz"
+    },
+    {
+      "id": "3-06",
+      "volume": 3,
+      "faixa": 6,
+      "titulo": "Amor Livre",
+      "rotulo": "Vol. 03 — Amor Livre"
+    },
+    {
+      "id": "3-07",
+      "volume": 3,
+      "faixa": 7,
+      "titulo": "Eu Digo Sim, Você Diz Não",
+      "rotulo": "Vol. 03 — Eu Digo Sim, Você Diz Não"
+    },
+    {
+      "id": "3-08",
+      "volume": 3,
+      "faixa": 8,
+      "titulo": "Namorada",
+      "rotulo": "Vol. 03 — Namorada"
+    },
+    {
+      "id": "3-09",
+      "volume": 3,
+      "faixa": 9,
+      "titulo": "Diferenças",
+      "rotulo": "Vol. 03 — Diferenças"
+    },
+    {
+      "id": "3-10",
+      "volume": 3,
+      "faixa": 10,
+      "titulo": "Amor Livre — Karaokê",
+      "rotulo": "Vol. 03 — Amor Livre — Karaokê"
+    },
+    {
+      "id": "4-01",
+      "volume": 4,
+      "faixa": 1,
+      "titulo": "São Teus Olhos",
+      "rotulo": "Vol. 04 — São Teus Olhos"
+    },
+    {
+      "id": "4-02",
+      "volume": 4,
+      "faixa": 2,
+      "titulo": "Não Deixei de Te Amar",
+      "rotulo": "Vol. 04 — Não Deixei de Te Amar"
+    },
+    {
+      "id": "4-03",
+      "volume": 4,
+      "faixa": 3,
+      "titulo": "Anjo da Noite",
+      "rotulo": "Vol. 04 — Anjo da Noite"
+    },
+    {
+      "id": "4-04",
+      "volume": 4,
+      "faixa": 4,
+      "titulo": "Era Tudo Mentira",
+      "rotulo": "Vol. 04 — Era Tudo Mentira"
+    },
+    {
+      "id": "4-05",
+      "volume": 4,
+      "faixa": 5,
+      "titulo": "Eu Digo Não",
+      "rotulo": "Vol. 04 — Eu Digo Não"
+    },
+    {
+      "id": "4-06",
+      "volume": 4,
+      "faixa": 6,
+      "titulo": "Só Por Amor",
+      "rotulo": "Vol. 04 — Só Por Amor"
+    },
+    {
+      "id": "4-07",
+      "volume": 4,
+      "faixa": 7,
+      "titulo": "Papel de Bobo",
+      "rotulo": "Vol. 04 — Papel de Bobo"
+    },
+    {
+      "id": "4-08",
+      "volume": 4,
+      "faixa": 8,
+      "titulo": "Sempre na Estrada",
+      "rotulo": "Vol. 04 — Sempre na Estrada"
+    },
+    {
+      "id": "4-09",
+      "volume": 4,
+      "faixa": 9,
+      "titulo": "Quem É Você?",
+      "rotulo": "Vol. 04 — Quem É Você?"
+    },
+    {
+      "id": "4-10",
+      "volume": 4,
+      "faixa": 10,
+      "titulo": "Noite Colorida",
+      "rotulo": "Vol. 04 — Noite Colorida"
+    },
+    {
+      "id": "4-11",
+      "volume": 4,
+      "faixa": 11,
+      "titulo": "Volta Pra Mim",
+      "rotulo": "Vol. 04 — Volta Pra Mim"
+    },
+    {
+      "id": "4-12",
+      "volume": 4,
+      "faixa": 12,
+      "titulo": "Por Te Amar Demais",
+      "rotulo": "Vol. 04 — Por Te Amar Demais"
+    },
+    {
+      "id": "5-01",
+      "volume": 5,
+      "faixa": 1,
+      "titulo": "Só Uma Vez",
+      "rotulo": "Vol. 05 — Só Uma Vez"
+    },
+    {
+      "id": "5-02",
+      "volume": 5,
+      "faixa": 2,
+      "titulo": "Eu Quero Fazer Amor",
+      "rotulo": "Vol. 05 — Eu Quero Fazer Amor"
+    },
+    {
+      "id": "5-03",
+      "volume": 5,
+      "faixa": 3,
+      "titulo": "Diga Pra Mim",
+      "rotulo": "Vol. 05 — Diga Pra Mim"
+    },
+    {
+      "id": "5-04",
+      "volume": 5,
+      "faixa": 4,
+      "titulo": "Não Peça Bis",
+      "rotulo": "Vol. 05 — Não Peça Bis"
+    },
+    {
+      "id": "5-05",
+      "volume": 5,
+      "faixa": 5,
+      "titulo": "Quando Ela Passa Por Mim",
+      "rotulo": "Vol. 05 — Quando Ela Passa Por Mim"
+    },
+    {
+      "id": "5-06",
+      "volume": 5,
+      "faixa": 6,
+      "titulo": "Riozinho",
+      "rotulo": "Vol. 05 — Riozinho"
+    },
+    {
+      "id": "5-07",
+      "volume": 5,
+      "faixa": 7,
+      "titulo": "Não Volta",
+      "rotulo": "Vol. 05 — Não Volta"
+    },
+    {
+      "id": "5-08",
+      "volume": 5,
+      "faixa": 8,
+      "titulo": "Corre-Corre",
+      "rotulo": "Vol. 05 — Corre-Corre"
+    },
+    {
+      "id": "5-09",
+      "volume": 5,
+      "faixa": 9,
+      "titulo": "Mundo de Amor",
+      "rotulo": "Vol. 05 — Mundo de Amor"
+    },
+    {
+      "id": "5-10",
+      "volume": 5,
+      "faixa": 10,
+      "titulo": "Blá Blá Blá",
+      "rotulo": "Vol. 05 — Blá Blá Blá"
+    },
+    {
+      "id": "5-11",
+      "volume": 5,
+      "faixa": 11,
+      "titulo": "De Cidade em Cidade",
+      "rotulo": "Vol. 05 — De Cidade em Cidade"
+    },
+    {
+      "id": "5-12",
+      "volume": 5,
+      "faixa": 12,
+      "titulo": "Meu Pensamento É Todo Você",
+      "rotulo": "Vol. 05 — Meu Pensamento É Todo Você"
+    },
+    {
+      "id": "5-13",
+      "volume": 5,
+      "faixa": 13,
+      "titulo": "Briguenta",
+      "rotulo": "Vol. 05 — Briguenta"
+    },
+    {
+      "id": "6-01",
+      "volume": 6,
+      "faixa": 1,
+      "titulo": "Mulher Indomada",
+      "rotulo": "Vol. 06 — Mulher Indomada"
+    },
+    {
+      "id": "6-02",
+      "volume": 6,
+      "faixa": 2,
+      "titulo": "Só Te Amar",
+      "rotulo": "Vol. 06 — Só Te Amar"
+    },
+    {
+      "id": "6-03",
+      "volume": 6,
+      "faixa": 3,
+      "titulo": "Minha Menina",
+      "rotulo": "Vol. 06 — Minha Menina"
+    },
+    {
+      "id": "6-04",
+      "volume": 6,
+      "faixa": 4,
+      "titulo": "Feitiço",
+      "rotulo": "Vol. 06 — Feitiço"
+    },
+    {
+      "id": "6-05",
+      "volume": 6,
+      "faixa": 5,
+      "titulo": "Diga de Uma Vez por Todas",
+      "rotulo": "Vol. 06 — Diga de Uma Vez por Todas"
+    },
+    {
+      "id": "6-06",
+      "volume": 6,
+      "faixa": 6,
+      "titulo": "Só Com Você",
+      "rotulo": "Vol. 06 — Só Com Você"
+    },
+    {
+      "id": "6-07",
+      "volume": 6,
+      "faixa": 7,
+      "titulo": "Fica Comigo Agora",
+      "rotulo": "Vol. 06 — Fica Comigo Agora"
+    },
+    {
+      "id": "6-08",
+      "volume": 6,
+      "faixa": 8,
+      "titulo": "Tô Pro Amor",
+      "rotulo": "Vol. 06 — Tô Pro Amor"
+    },
+    {
+      "id": "6-09",
+      "volume": 6,
+      "faixa": 9,
+      "titulo": "Namoro Antigo",
+      "rotulo": "Vol. 06 — Namoro Antigo"
+    },
+    {
+      "id": "6-10",
+      "volume": 6,
+      "faixa": 10,
+      "titulo": "Senhora Aparecida",
+      "rotulo": "Vol. 06 — Senhora Aparecida"
+    }
+  ]
+}
