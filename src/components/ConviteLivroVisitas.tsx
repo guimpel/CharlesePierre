@@ -18,7 +18,7 @@ const ConviteLivroVisitas = () => (
           </p>
         </div>
         <Link
-          to="/livro-de-visitas"
+          to="/livro-de-visitas/registro.html"
           className="shrink-0 inline-flex items-center justify-center gap-3 bg-accent hover:brightness-110 text-black px-6 py-4 text-xs font-semibold font-body tracking-widest uppercase"
         >
           Deixe seu registro <ArrowRight size={18} />
