@@ -13,8 +13,8 @@ const ConviteLivroVisitas = () => (
             ASSINE NOSSO LIVRO DE VISITAS
           </h2>
           <p className="font-body text-foreground/60 mt-3 leading-7 max-w-xl">
-            Você guarda uma lembrança, foto ou história de Charles & Pierre?
-            Compartilhe com a dupla e ajude a preservar essa memória.
+            Qual disco acompanhou sua vida? Qual refrão ficou na memória?
+            Conte a história daquele show, da sua música favorita ou de alguém especial.
           </p>
         </div>
         <Link
