@@ -105,7 +105,7 @@ form.addEventListener('submit',async event=>{
      const songs=Object.entries(m.detalhes||{}).filter(([k,v])=>/^musica_\d+$/.test(k)&&typeof v==='string').map(([k,v])=>({titulo:v}));
      if(songs.length){const mm=document.createElement('p');mm.className='memo';mm.textContent='Canções: '+songs.map(x=>x.titulo).filter(Boolean).join(' · ');card.append(mm);}
      for(const a of Array.isArray(m.arquivos)?m.arquivos:[]){
-       if(/^image\/(jpeg|png|webp)$/.test(a.mime)&&typeof a.url==='string'&&a.url.startsWith('https://rbmacrxdasqhqtykbkvj.supabase.co/')){
+       if(/^image\/(jpeg|png|webp)$/.test(a.mime)&&typeof a.url==='string'&&a.url.startsWith('https://syexhhoeynolwqdehvjv.supabase.co/')){
          const img=document.createElement('img');img.src=a.url;img.alt='Fotografia compartilhada por '+(m.nome||'visitante');img.loading='lazy';card.append(img);
        }
      }
